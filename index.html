@@ -417,8 +417,8 @@ var CONFIG = {
      Every order and contact-form enquiry is then added to your Google Sheet automatically.
      sheetKey must match SECRET_KEY in your Apps Script (any word you choose).
      This same endpoint is also used to create and check Ziina online payments. */
-  sheetEndpoint: "https://script.google.com/macros/s/AKfycbwMimSEYRihjqYxOegStWZNYO2DH3W1Jdu8xRgleAN_nnIQvqXvx6LyzvyQtsg_t0uj/exec",
-  sheetKey: "",
+  sheetEndpoint: "https://script.google.com/macros/s/AKfycbweQHtJ6l2NqKyk13UlefeUFI6PDnmpJbmR1L2EQM2Hhlg-TVV2yvRn1AaVnhk8en8O/exec",
+  sheetKey: "Roohi",
 
   emirates: ["Abu Dhabi","Dubai","Sharjah","Ajman","Umm Al Quwain","Ras Al Khaimah","Fujairah"],
 
@@ -695,7 +695,7 @@ var toastT;
 function toast(html){var t=$("#toast");t.innerHTML=html;t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove("show")},4500)}
 
 /* ---------- Google Sheet sending ---------- */
-function sheetOn(){return /^https:\/\/script\.google\.com\/macros\/s\/[^\s]+\/exec$/.test(CONFIG.sheetEndpoint="https://script.google.com/macros/s/AKfycbwMimSEYRihjqYxOegStWZNYO2DH3W1Jdu8xRgleAN_nnIQvqXvx6LyzvyQtsg_t0uj/exec")}
+function sheetOn(){return /^https:\/\/script\.google\.com\/macros\/s\/[^\s]+\/exec$/.test(CONFIG.sheetEndpoint="https://script.google.com/macros/s/AKfycbweQHtJ6l2NqKyk13UlefeUFI6PDnmpJbmR1L2EQM2Hhlg-TVV2yvRn1AaVnhk8en8O/exec")}
 function postSheet(payload){
   payload.key=CONFIG.sheetKey="Roohi";
   var ctl=("AbortController" in window)?new AbortController():null,timer;
