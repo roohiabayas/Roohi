@@ -417,8 +417,8 @@ var CONFIG = {
   currency: "AED",
 
   /* Contact details (shown in the footer, contact page and order messages) */
-  whatsapp: "",                          // digits only with country code, e.g. "971501234567". Leave "" to hide.
-  phoneDisplay: "+971 00 000 0000",
+  whatsapp: "971561631007",                          // digits only with country code, e.g. "971501234567". Leave "" to hide.
+  phoneDisplay: "+971 56 163 1007",
   email: "roohiabayass@gmail.com",
   instagram: "roohi_abayass",            // handle without @, e.g. "roohi.abayas"
   hours: "Daily, 8:00 AM – 10:00 PM",
@@ -772,6 +772,7 @@ function postSheetJSON(payload,timeoutMs){
   var to=new Promise(function(res,rej){timer=setTimeout(function(){if(ctl)ctl.abort();rej(new Error("timeout"))},timeoutMs||20000)});
   return Promise.race([req,to]).then(function(r){clearTimeout(timer);return r},function(e){clearTimeout(timer);throw e});
 }
+
 
 /* ---------- shared fragments ---------- */
 function stockLabel(p){
