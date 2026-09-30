@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ROOHI | Premium Abayas</title>
-<meta name="description" content="ROOHI – premium abayas. Cash on delivery. عبايات روحي">
+<meta name="description" content="ROOHI – premium abayas. Pay by card or cash on delivery. عبايات روحي">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Tenor+Sans&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
@@ -143,6 +143,25 @@ main:focus{outline:none}
 .filters button[aria-pressed="true"]{color:var(--text-on-sand);border-color:var(--gold-deep)}
 .filters button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .filters small{font-size:.85em;color:var(--taupe);margin-left:6px}
+
+/* ---------- Collections page animations ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .coll-hero img{animation:collZoom 2.2s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes collZoom{from{opacity:0;transform:scale(1.08)}to{opacity:1;transform:none}}
+  .coll-hero-copy>*{opacity:0;animation:collRise .9s cubic-bezier(.2,.7,.2,1) forwards}
+  .coll-hero-copy>:nth-child(1){animation-delay:.25s}
+  .coll-hero-copy>:nth-child(2){animation-delay:.4s}
+  .coll-hero-copy>:nth-child(3){animation-delay:.6s}
+  .coll-hero-copy>:nth-child(4){animation-delay:.8s}
+  @keyframes collRise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+  .coll-fade{opacity:0;animation:collRise .8s .9s cubic-bezier(.2,.7,.2,1) forwards}
+  .card.rv{opacity:0;transform:translateY(38px) scale(.98)}
+  .card.rv.in{opacity:1;transform:none;transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+  .card .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.22) 50%,transparent 65%);transform:translateX(-120%);transition:transform .9s ease;pointer-events:none}
+  .card:hover .ph::after{transform:translateX(120%)}
+  .card h3{transition:color .3s}
+  .card:hover h3{color:var(--gold-deep)}
+}
 .filter-note{color:var(--taupe);margin:-14px 0 clamp(26px,3vw,40px);max-width:56ch}
 .tag-oos{position:absolute;top:14px;left:14px;z-index:2;background:#15100c;color:#ece3d3;font-size:12px;letter-spacing:.14em;padding:7px 13px}
 .card img{width:100%;height:100%;object-fit:cover;transition:transform 1.3s cubic-bezier(.2,.7,.2,1)}
@@ -417,8 +436,8 @@ var CONFIG = {
      Every order and contact-form enquiry is then added to your Google Sheet automatically.
      sheetKey must match SECRET_KEY in your Apps Script (any word you choose).
      This same endpoint is also used to create and check Ziina online payments. */
-  sheetEndpoint: "https://script.google.com/macros/s/AKfycbweQHtJ6l2NqKyk13UlefeUFI6PDnmpJbmR1L2EQM2Hhlg-TVV2yvRn1AaVnhk8en8O/exec",
-  sheetKey: "Roohi",
+  sheetEndpoint: "https://script.google.com/macros/s/AKfycbwMimSEYRihjqYxOegStWZNYO2DH3W1Jdu8xRgleAN_nnIQvqXvx6LyzvyQtsg_t0uj/exec",
+  sheetKey: "",
 
   emirates: ["Abu Dhabi","Dubai","Sharjah","Ajman","Umm Al Quwain","Ras Al Khaimah","Fujairah"],
 
@@ -441,7 +460,7 @@ var TEXT = {
   homePieces: 4,          // how many of your newest pieces appear on the home page
 
   trust: [
-    { title:"Cash on delivery", text:"Pay when your abaya arrives" },
+    { title:"Card or cash payment", text:"Pay online by card, or cash on delivery" },
     { title:"Free delivery", text:"In "+CONFIG.deliveryDays+", across the UAE" },
     { title:"Crafted with care", text:"Premium fabrics, carefully finished" }
   ],
@@ -450,7 +469,7 @@ var TEXT = {
   detailText: "Every ROOHI abaya is cut for movement, so quiet luxury never feels like an effort.",
 
   orderSectionHeading: "Ordering is simple",
-  orderSectionSub: "Order online and pay in cash when it arrives."
+  orderSectionSub: "Order online and pay by card, or in cash when it arrives."
 };
 
 /* Images (the build replaces these paths with embedded data) */
@@ -506,7 +525,7 @@ var PRODUCTS = [
     sizes:{ S:true, M:true, L:true, XL:true, XXL:false },
     short:"Tie-dye indigo tones with ribbon ties at the sleeve and a solid blue front panel." },
 
-  { id:"desert-botanica", name:"Desert Botanica", price:95, stock:5,
+  { id:"desert-botanica", name:"Desert Botanica", price:93, stock:5,
     imgs:["images/khaki.jpg", "images/temu-rose-lace-1.jpg", "images/temu-rose-lace-2.jpg", "images/temu-rose-lace-3.jpg"],
     pos:"50% 30%",
     sizes:{ S:true, M:false, L:true, XL:false, XXL:false },
@@ -518,7 +537,7 @@ var PRODUCTS = [
     sizes:{ S:true, M:true, L:true, XL:true, XXL:false },
     short:"Floral lace over deep bordeaux, with wide flared sleeves and a clean satin border." },
 
-  { id:"noir-silverline", name:"Noir Silverline", price:90, stock:4,
+  { id:"noir-silverline", name:"Noir Silverline", price:92, stock:4,
     imgs:["images/6.0.avif", "images/6.1.avif", "images/temu-noir-drape-1.jpg", "images/temu-noir-drape-2.jpg"],
     pos:"50% 50%",
     sizes:{ S:true, M:true, L:true, XL:true, XXL:false },
@@ -530,13 +549,13 @@ var PRODUCTS = [
     sizes:{ S:true, M:true, L:false, XL:true, XXL:false },
     short:"A midnight open abaya with wide flared sleeves ending in leopard-print cuffs." },
 
-      { id:"taupe-whisper", name:"Taupe Whisper", price:110, stock:2,
+      { id:"taupe-whisper", name:"Taupe Whisper", price:109, stock:2,
     imgs:["images/8.0.avif", "images/8.1.avif", "images/8.2.avif", "images/8.3.avif"],
     pos:"50% 50%",
     sizes:{ S:true, M:true, L:true, XL:true, XXL:true },
     short:"A soft taupe open abaya with wide bell sleeves, worn with a matching inner dress and waist tie." },
 
-  { id:"onyx-sash", name:"Onyx Sash", price:80, stock:4,
+  { id:"onyx-sash", name:"Onyx Sash", price:83, stock:4,
     imgs:["images/9.0.avif", "images/9.1.avif", "images/9.2.avif", "images/temu-dubai-open-1.jpg"],
     pos:"50% 50%",
     sizes:{ S:false, M:false, L:false, XL:false, XXL:true },
@@ -548,31 +567,31 @@ var PRODUCTS = [
     sizes:{ S:true, M:true, L:true, XL:true, XXL:true },
     short:"A black open abaya scattered with white dots and finished with a fine white edging." },
 
-      { id:"plum-smoke", name:"Plum Smoke", price:100, stock:5,
+      { id:"plum-smoke", name:"Plum Smoke", price:98, stock:5,
     imgs:["images/110.avif", "images/11.2.avif", "images/11.3.avif", "images/11.4.avif"],
     pos:"50% 50%",
     sizes:{ S:true, M:true, L:true, XL:true, XXL:true },
     short:"A smoky marble print in taupe and grey over deep plum sleeves, in a generous open shape." },
 
-  { id:"sage-lace", name:"Sage Lace", price:110, stock:5,
+  { id:"sage-lace", name:"Sage Lace", price:109, stock:5,
     imgs:["images/12.0.avif", "images/12.1.avif", "images/12.2.avif", "images/12.3.avif"],
     pos:"50% 50%",
     sizes:{ S:true, M:true, L:true, XL:true, XXL:true },
     short:"A soft sage open abaya trimmed in white lace down the front, with lace-panelled sleeves." },
 
-  { id:"peacock-wrap", name:"Peacock Wrap", price:80, stock:5,
+  { id:"peacock-wrap", name:"Peacock Wrap", price:84, stock:5,
     imgs:["images/13.0.avif", "images/13.1.avif", "images/13.2.avif", "images/13.3.avif"],
     pos:"50% 50%",
     sizes:{ S:false, M:false, L:true, XL:false, XXL:false },
     short:"A deep teal wrap-front abaya with gathered shoulders, flared sleeves and a tie waist." },
 
-  { id:"serene-flow", name:"Serene Flow", price:90, stock:5,
+  { id:"serene-flow", name:"Serene Flow", price:92, stock:5,
     imgs:["images/15.0.avif", "images/15.1.avif", "images/15.2.avif"],
     pos:"50% 50%",
     sizes:{ S:false, M:false, L:true, XL:true, XXL:false },
     short:"A flowing, floor-length abaya with a relaxed fit and a soft, elegant drape." },
 
-  { id:"quiet-grace", name:"Quiet Grace", price:110, stock:5,
+  { id:"quiet-grace", name:"Quiet Grace", price:109, stock:5,
     imgs:["images/16.0.avif", "images/16.1.avif", "images/16.2.avif"],
     pos:"50% 50%",
     sizes:{ S:true, M:true, L:true, XL:true, XXL:true },
@@ -584,23 +603,47 @@ var PRODUCTS = [
     sizes:{ S:false, M:true, L:true, XL:true, XXL:false },
     short:"Our signature premium piece, cut with a refined drape and finished with care." },
 
-  { id:"ebony-scallop", name:"Ebony Scallop", price:80, stock:4,
+  { id:"ebony-scallop", name:"Ebony Scallop", price:84, stock:4,
     imgs:["images/18.0.avif", "images/18.1.avif", "images/18.2.avif", "images/18.3.avif"],
     pos:"50% 50%",
     sizes:{ S:true, M:true, L:true, XL:true, XXL:false },
     short:"A black V-neck abaya with a scalloped lace hem and lace-edged cuffs, cut in a soft A-line." },
 
-  { id:"sand-ink", name:"Sand Ink", price:90, stock:3,
+  { id:"sand-ink", name:"Sand Ink", price:92, stock:3,
     imgs:["images/19.0.avif", "images/19.1.avif", "images/19.2.avif"],
     pos:"50% 50%",
     sizes:{ S:true, M:true, L:true, XL:true, XXL:false },
     short:"A cream abaya with a bold black brushstroke print, gathered cuffs and a tie waist." },
 
-  { id:"mocha-gather", name:"Mocha Gather", price:90, stock:2,
+  { id:"mocha-gather", name:"Mocha Gather", price:94, stock:2,
     imgs:["images/20.0.avif", "images/20.1.avif"],
     pos:"50% 50%",
     sizes:{ S:true, M:true, L:true, XL:false, XXL:false },
     short:"A rich mocha abaya with a drawstring waist and gathered, softly puffed sleeves." },
+
+  { id:"misty-bow", name:"Misty Bow", price:85, stock:8,
+    imgs:["images/24.0.avif", "images/24.1.avif", "images/24.2.avif", "images/24.3.avif"],
+    pos:"50% 50%",
+    sizes:{ S:true, M:true, L:true, XL:true, XXL:true },
+    short:"A soft dove-grey abaya with tiny embroidered bows and delicate scalloped cuffs." },
+
+  { id:"merlot-cape", name:"Merlot Cape", price:99, stock:2,
+    imgs:["images/21.0.avif", "images/22.1.avif", "images/22.2.avif", "images/22.3.avif"],
+    pos:"50% 50%",
+    sizes:{ S:false, M:true, L:false, XL:false, XXL:false },
+    short:"A deep merlot abaya with a tie waist, gathered cuffs and a flowing matching cape." },
+
+  { id:"harbour-navy", name:"Harbour Navy", price:93, stock:4,
+    imgs:["images/23.0.avif", "images/23.1.avif", "images/23.2.avif", "images/23.3.avif"],
+    pos:"50% 50%",
+    sizes:{ S:false, M:true, L:true, XL:true, XXL:false },
+    short:"A deep navy abaya with crisp ivory piping on the sleeves and a tie-at-the-waist belt." },
+
+    { id:"olive-grove", name:"Olive Grove", price:89, stock:2,
+    imgs:["images/27.0.avif", "images/27.1.avif", "images/27.2.avif", "images/27.3.avif"],
+    pos:"50% 50%",
+    sizes:{ S:true, M:true, L:true, XL:true, XXL:true },
+    short:"A calm olive-green abaya with softly puffed cuffs and a tie waist for an easy fit." },
 
 ];
   /* ---- COPY FROM HERE ----------------------------------------------
@@ -627,11 +670,15 @@ var PRODUCTS = [
    pieces from BOTH lists are also shown automatically on the home page.
    ===================================================================== */
 var FREE_SIZE_PRODUCTS = [
-  { id:"midnight-garden", name:"Midnight Garden", price:110, stock:5,
-    imgs:["images/14.0.avif", "images/14.1.avif", "images/14.2.avif", "images/14.3.avif"],
+  { id:"noir-blossom", name:"Noir Blossom", price:109, stock:5,
+    imgs:["images/25.0.avif", "images/25.1.avif", "images/25.2.avif", "images/25.3.avif"],
     pos:"50% 50%",
-    short:"A black abaya with a mauve floral print across the sleeves and hem, in one relaxed free size." },
+    short:"A black abaya with a hooded front and white floral embroidery on the sleeves, in one relaxed free size." },
 
+    { id:"oat-blossom", name:"Oat Blossom", price:82, stock:4,
+    imgs:["images/26.0.avif", "images/26.1.avif", "images/26.2.avif", "images/26.3.avif"],
+    pos:"50% 50%",
+    short:"A textured oat abaya with hand-stitched floral embroidery on the sleeves, in one relaxed free size." },
 ];
   /* ---- COPY FROM HERE ----------------------------------------------
   { id:"new-free-size-piece", name:"New Free Size Piece", price:0, stock:0,
@@ -695,7 +742,7 @@ var toastT;
 function toast(html){var t=$("#toast");t.innerHTML=html;t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove("show")},4500)}
 
 /* ---------- Google Sheet sending ---------- */
-function sheetOn(){return /^https:\/\/script\.google\.com\/macros\/s\/[^\s]+\/exec$/.test(CONFIG.sheetEndpoint="https://script.google.com/macros/s/AKfycbweQHtJ6l2NqKyk13UlefeUFI6PDnmpJbmR1L2EQM2Hhlg-TVV2yvRn1AaVnhk8en8O/exec")}
+function sheetOn(){return /^https:\/\/script\.google\.com\/macros\/s\/[^\s]+\/exec$/.test(CONFIG.sheetEndpoint="https://script.google.com/macros/s/AKfycbwMimSEYRihjqYxOegStWZNYO2DH3W1Jdu8xRgleAN_nnIQvqXvx6LyzvyQtsg_t0uj/exec")}
 function postSheet(payload){
   payload.key=CONFIG.sheetKey="Roohi";
   var ctl=("AbortController" in window)?new AbortController():null,timer;
@@ -742,7 +789,7 @@ function orderSteps(){
   '<li><h3>Choose your piece</h3><p>Pick your abaya and select the size that suits you.</p></li>'+
   '<li><h3>Add to cart</h3><p>Add it to your cart. You can keep browsing and add more pieces.</p></li>'+
   '<li><h3>Enter your details</h3><p>At checkout, add your full name, phone number and complete delivery address.</p></li>'+
-  '<li><h3>Pay on delivery</h3><p>We confirm your order, deliver in '+esc(CONFIG.deliveryDays)+', and you pay in cash when it arrives.</p></li></ol>';
+  '<li><h3>Pay by card or cash</h3><p>We confirm your order and deliver in '+esc(CONFIG.deliveryDays)+'. Pay online by card, or pay in cash when it arrives.</p></li></ol>';
 }
 function trust(){
   return '<div class="trust"><div class="wrap"><ul>'+TEXT.trust.map(function(t){return '<li><strong>'+esc(t.title)+'</strong><span>'+esc(t.text)+'</span></li>'}).join('')+'</ul></div></div>';
@@ -762,10 +809,10 @@ function renderFooter(){
   if(hasIG())c+='<li><b>Instagram</b><a href="https://instagram.com/'+esc(CONFIG.instagram)+'" target="_blank" rel="noopener">@'+esc(CONFIG.instagram)+'</a></li>';
   c+='<li><b>Hours</b><span>'+esc(CONFIG.hours)+'</span></li>';
   $("#footer").innerHTML='<div class="wrap"><div class="fgrid">'+
-  '<div><a class="brand" href="#/"><span class="w">ROOHI</span><span class="s">PREMIUM ABAYAS</span></a><p class="ar" lang="ar" dir="rtl">عبايات روحي</p><p>Premium abayas, delivered to your door. Pay in cash when your order arrives.</p></div>'+
+  '<div><a class="brand" href="#/"><span class="w">ROOHI</span><span class="s">PREMIUM ABAYAS</span></a><p class="ar" lang="ar" dir="rtl">عبايات روحي</p><p>Premium abayas, delivered to your door. Pay by card, or in cash when your order arrives.</p></div>'+
   '<div><h4>Help</h4><ul><li><a href="#/how-to-order">How to order</a></li><li><a href="#/shipping">Shipping &amp; delivery</a></li><li><a href="#/faq">FAQ</a></li><li><a href="#/contact">Contact us</a></li></ul></div>'+
   '<div><h4>Contact</h4><ul class="contact-list">'+c+'</ul></div></div>'+
-  '<div class="fbar"><span>&copy; '+new Date().getFullYear()+' ROOHI. All rights reserved.</span><nav aria-label="Legal"><a href="#/privacy">Privacy policy</a><a href="#/terms">Terms &amp; conditions</a><a href="#/shipping">Shipping</a></nav><span>Cash on delivery available</span></div></div>';
+  '<div class="fbar"><span>&copy; '+new Date().getFullYear()+' ROOHI. All rights reserved.</span><nav aria-label="Legal"><a href="#/privacy">Privacy policy</a><a href="#/terms">Terms &amp; conditions</a><a href="#/shipping">Shipping</a></nav><span>Card payment &amp; cash on delivery available</span></div></div>';
 }
 
 /* ---------- pages ---------- */
@@ -777,10 +824,10 @@ pages.home=function(){
   '<div class="hero-copy"><p class="hero-sub">'+esc(TEXT.heroSub)+'</p><h1 class="hero-title">'+TEXT.heroTitle.map(esc).join('<br>')+'</h1><p class="hero-line">'+esc(TEXT.heroTagline)+'</p>'+
   '<div class="hero-cta"><a class="btn" href="#/collections">'+esc(TEXT.heroButton)+' &rarr;</a></div></div>'+
   '<button type="button" class="scroll-cue" id="scrollCue" aria-label="Scroll down"><span>Scroll</span><i></i></button></section>'+
-  trust()+
   '<section class="on-sand" style="padding-top:clamp(70px,10vw,140px);padding-bottom:clamp(80px,10vw,140px)"><div class="wrap"><div class="sec-head"><h2>'+esc(TEXT.newArrivalsHeading)+'</h2></div><div class="cards">'+homePieces().map(card).join('')+'</div>'+
   '<p style="text-align:center;margin:60px 0 0"><a class="btn" href="#/collections">See all collections</a></p></div></section>'+
   '<section class="detail on-ink"><img src="'+IMG.sleeve+'" width="1536" height="1024" loading="lazy" alt="Close view of a black abaya sleeve with a fine gold line and the ROOHI star"><div class="wrap"><h2>'+esc(TEXT.detailHeading)+'</h2><p>'+esc(TEXT.detailText)+'</p></div></section>'+
+  trust()+
   '<section class="section on-sand"><div class="wrap"><div class="sec-head"><h2>'+esc(TEXT.orderSectionHeading)+'</h2><p>'+esc(TEXT.orderSectionSub)+'</p></div>'+orderSteps()+'</div></section>',
   init:function(){
     var c=$("#scrollCue"); if(c)c.addEventListener("click",function(){var h=$(".hero");window.scrollTo({top:h.offsetTop+h.offsetHeight-(parseInt(getComputedStyle(document.documentElement).getPropertyValue("--nav-h"))||76),behavior:"smooth"})});
@@ -789,7 +836,11 @@ pages.home=function(){
 
 pages.collections=function(){
   var nS=REGULAR_PRODUCTS.length,nF=FREE_SIZE_PRODUCTS.length;
-  var tabs='<div class="filters" role="group" aria-label="Filter collections">'+
+  var list=PRODUCTS.map(function(p,i){return {p:p,i:i}}).sort(function(a,b){
+    var da=a.p.added?Date.parse(a.p.added):0,db=b.p.added?Date.parse(b.p.added):0;
+    return db!==da?db-da:b.i-a.i;
+  }).map(function(x){return x.p});
+  var tabs='<div class="filters coll-fade" role="group" aria-label="Filter collections">'+
     '<button type="button" data-f="all" aria-pressed="true">All<small>'+(nS+nF)+'</small></button>'+
     '<button type="button" data-f="sized" aria-pressed="false">S &ndash; XXL<small>'+nS+'</small></button>'+
     '<button type="button" data-f="free" aria-pressed="false">Free size<small>'+nF+'</small></button></div>';
@@ -797,15 +848,29 @@ pages.collections=function(){
   '<section class="coll-hero"><img src="'+IMG.collectionsHero+'" width="1944" height="809" loading="lazy" alt="A woman in a black embroidered ROOHI abaya holding a cream shopping bag beside a courtyard fountain"><div class="coll-hero-copy"><p class="hero-sub">EXPLORE OUR</p><h1>Collections</h1><p>Timeless abayas for every moment, every mood, every you.</p><span class="div-line"></span></div></section>'+
   '<div class="on-sand"><div class="wrap"><div class="page-head" style="padding-top:clamp(30px,4vw,50px)"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span>/</span>Collections</nav></div>'+
   tabs+'<p class="filter-note" id="fnote" hidden>Free size pieces come in one size, so there is nothing to choose.</p>'+
-  '<div class="cards" id="grid" style="padding-bottom:clamp(70px,9vw,130px)">'+PRODUCTS.map(card).join('')+'</div></div></div>'+trust(),
+  '<div class="cards" id="grid" style="padding-bottom:clamp(70px,9vw,130px)">'+list.map(card).join('')+'</div></div></div>',
   init:function(){
     var bar=$(".filters"); if(!bar)return;
+    var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches;
+    var io=(!reduce&&"IntersectionObserver" in window)?new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}})},{threshold:.1,rootMargin:"0px 0px -6% 0px"}):null;
+    function reveal(){
+      if(!io)return;
+      var g=$("#grid"),cols=getComputedStyle(g).gridTemplateColumns.split(" ").length||2,k=0;
+      $$("#grid .card").forEach(function(c){
+        io.unobserve(c);c.classList.remove("in");c.classList.add("rv");
+        if(c.hidden)return;
+        c.style.setProperty("--d",((k%cols)*0.1)+"s");k++;
+        void c.offsetWidth;io.observe(c);
+      });
+    }
+    reveal();
     bar.addEventListener("click",function(e){
       var b=e.target.closest("button[data-f]"); if(!b)return;
       var f=b.dataset.f;
       $$("button",bar).forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});
       $$("#grid .card").forEach(function(c){c.hidden=!(f==="all"||c.dataset.cat===f)});
       $("#fnote").hidden=f!=="free";
+      reveal();
     });
   }};
 };
@@ -829,7 +894,7 @@ pages.piece=function(id){
     var on=pSizes[s]!==false;
     return '<label class="'+(on?'':'unavailable')+'" title="'+(on?'':'Unavailable in this piece')+'"><input type="radio" name="size" value="'+s+'"'+(isFree(p)&&on?' checked':'')+(on?'':' disabled aria-label="'+s+', unavailable"')+'><span>'+s+'</span></label>';
   }).join('');
-  var pay=[]; if(CONFIG.payments.cod)pay.push("Cash on delivery"); if(CONFIG.payments.cardOnDelivery)pay.push("card on delivery");
+  var pay=["Card payment","cash on delivery"];
   var buyBlock;
   if(oos){
     var msgLink=hasWA()?waLink("Hello ROOHI, I'd like to know when "+p.name+" will be back in stock."):"#/contact";
@@ -848,8 +913,8 @@ pages.piece=function(id){
   buyBlock+
   '<div class="accs"><details class="acc" id="size-guide"><summary>Size guide</summary><div class="body"><p>Our abayas are available in S, M, L, XL and XXL, following a relaxed, flowing fit typical of premium abayas. Choose the size closest to your usual clothing size.</p><p>Not sure which to pick? If you are between two sizes, we recommend sizing up for a more relaxed, flowing look. Message us if you would like help choosing.</p>'+(isFree(p)?'<p>This piece is Free size: a single relaxed size, so there is nothing to choose.</p>':'')+'</div></details>'+
   '<details class="acc"><summary>Care</summary><div class="body"><p>Please follow the care label. We recommend dry cleaning for embellished, printed and lace pieces, and storing your abaya on a hanger.</p></div></details>'+
-  '<details class="acc"><summary>Delivery &amp; payment</summary><div class="body"><p>Delivery takes '+esc(CONFIG.deliveryDays)+' and is free across the UAE. You pay in cash to the courier when your order arrives.</p></div></details></div></div></div></div></div>'+
-  '<section class="section on-sand" style="padding-top:0"><div class="wrap"><div class="sec-head"><h2>How to order</h2><p>Four steps, and you pay on delivery.</p></div>'+orderSteps()+'</div></section>'+
+  '<details class="acc"><summary>Delivery &amp; payment</summary><div class="body"><p>Delivery takes '+esc(CONFIG.deliveryDays)+' and is free across the UAE. Pay securely by card online, or pay in cash to the courier when your order arrives.</p></div></details></div></div></div></div></div>'+
+  '<section class="section on-sand" style="padding-top:0"><div class="wrap"><div class="sec-head"><h2>How to order</h2><p>Four steps, and you pay by card or cash.</p></div>'+orderSteps()+'</div></section>'+
   '<section class="section on-sand" style="padding-top:0"><div class="wrap"><div class="sec-head"><h2>You may also like</h2><p></p></div><div class="cards" style="grid-template-columns:repeat(3,minmax(0,1fr))">'+others.map(card).join('')+'</div></div></section>', init:function(){
     var qty=1,root=$(".pdp"),imgs=pImgs(p);
     root.addEventListener("click",pdpClick);
@@ -886,7 +951,7 @@ pages.cart=function(){
   '<div class="on-sand"><div class="wrap"><div class="page-head"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span>/</span>Cart</nav><h1>Your cart</h1></div>'+
   '<div class="cart-grid"><div id="lines">'+lines+'<p style="margin-top:24px"><a href="#/collections" class="link">Continue shopping</a></p></div>'+
   '<aside class="summary" aria-label="Order summary"><h2>Order summary</h2><div class="sum-row"><span>Subtotal</span><span>'+money(t.sub)+'</span></div><div class="sum-row"><span>Delivery</span><span>Free</span></div><div class="sum-row total"><span>Total</span><strong style="font-weight:400">'+money(t.total)+'</strong></div>'+
-  '<p class="sum-note">Payment is cash on delivery. You will not be charged online.</p><a class="btn block" href="#/checkout">Proceed to checkout</a></aside></div></div></div>'};
+  '<p class="sum-note">Choose how to pay at checkout: securely by card online, or in cash when your order arrives.</p><a class="btn block" href="#/checkout">Proceed to checkout</a></aside></div></div></div>'};
 };
 
 function fld(id,label,o){
@@ -903,7 +968,7 @@ function fld(id,label,o){
 function summaryMini(){
   var t=totals();
   return '<aside class="summary"><h2>Your order</h2>'+cart.map(function(l){var p=byId(l.id);return '<div class="mini"><img src="'+mainImg(p)+'" alt="" style="object-position:'+(p.pos||"50% 50%")+'"><div>'+esc(p.name)+'<small>'+esc(sizeText(l.size))+' &middot; Qty '+l.qty+'</small></div><span>'+money(lineTotal(l))+'</span></div>'}).join('')+
-  '<div style="border-top:1px solid var(--line);margin-top:12px;padding-top:12px"><div class="sum-row"><span>Subtotal</span><span>'+money(t.sub)+'</span></div><div class="sum-row"><span>Delivery</span><span>Free</span></div><div class="sum-row total"><span>Total to pay on delivery</span><strong style="font-weight:400">'+money(t.total)+'</strong></div></div>'+
+  '<div style="border-top:1px solid var(--line);margin-top:12px;padding-top:12px"><div class="sum-row"><span>Subtotal</span><span>'+money(t.sub)+'</span></div><div class="sum-row"><span>Delivery</span><span>Free</span></div><div class="sum-row total"><span>Total</span><strong style="font-weight:400">'+money(t.total)+'</strong></div></div>'+
   '<p class="sum-note"><a href="#/cart" class="link">Edit cart</a></p></aside>';
 }
 
@@ -1009,7 +1074,7 @@ function submitOrder(e){
         window.location.href=res.redirect_url;
       } else {
         btn.disabled=false;btn.textContent="Place order · "+money(t.total);
-        $("#formerr").textContent=(res&&res.error)||"Could not start online payment. Please try again or choose pay on delivery.";
+        $("#formerr").textContent=(res&&res.error)||"Could not start online payment. Please try again or choose cash on delivery.";
       }
     }).catch(function(){
       btn.disabled=false;btn.textContent="Place order · "+money(t.total);
@@ -1039,19 +1104,19 @@ pages.confirmation=function(){
     send='<div class="notice no-print"><strong>'+(sheetOn()?'We could not reach our order system.':'One last step: send us your order.')+'</strong> '+(sheetOn()?'Your order is saved on this device and will retry automatically. To be safe, tap a button below so we receive it right away.':'Tap a button below so your order reaches us and we can confirm it with you.')+'</div><div class="actions no-print" style="justify-content:flex-start;margin:0 0 10px">'+btns+'</div>';
   }
   return {title:"Order received | ROOHI",html:
-  '<div class="on-sand"><div class="narrow done" style="padding:clamp(50px,7vw,90px) 0 clamp(70px,9vw,120px)"><h1>Thank you, '+esc(first)+'.</h1><p class="lede">We have your order and will contact you to confirm it. Keep your phone nearby, and please have the cash ready for delivery.</p><span class="orderid">'+esc(o.id)+'</span>'+
+  '<div class="on-sand"><div class="narrow done" style="padding:clamp(50px,7vw,90px) 0 clamp(70px,9vw,120px)"><h1>Thank you, '+esc(first)+'.</h1><p class="lede">We have your order and will contact you to confirm it. Keep your phone nearby so we can reach you.</p><span class="orderid">'+esc(o.id)+'</span>'+
   '<div style="margin-top:30px">'+send+'</div>'+
   '<div class="box"><h2>Order details</h2><dl>'+o.items.map(function(i){return '<dt>'+esc(i.name)+'</dt><dd>'+esc(sizeText(i.size))+' &middot; Qty '+i.qty+' &middot; '+money(i.price*i.qty)+'</dd>'}).join('')+
   '<dt>Delivery fee</dt><dd>Free</dd><dt>Total to pay</dt><dd><strong>'+money(o.totals.total)+'</strong> ('+esc(o.payment)+')</dd></dl></div>'+
   '<div class="box"><h2>Delivering to</h2><dl><dt>Name</dt><dd>'+esc(o.customer.fullName)+'</dd><dt>Mobile</dt><dd>'+esc(o.customer.phone)+'</dd><dt>Email</dt><dd>'+esc(o.customer.email)+'</dd><dt>Address</dt><dd>'+esc([o.address.street,o.address.unit,o.address.area,o.address.emirate,"United Arab Emirates"].filter(Boolean).join(", "))+'</dd>'+(o.address.landmark?'<dt>Landmark</dt><dd>'+esc(o.address.landmark)+'</dd>':'')+'</dl></div>'+
-  '<h2 style="font-size:32px;margin:44px 0 6px">What happens next</h2><ul class="next"><li>We contact you by phone or WhatsApp to confirm your order and address.</li><li>We prepare and dispatch your abaya. Delivery takes '+esc(CONFIG.deliveryDays)+'.</li><li>The courier calls you on arrival. Check your piece, then pay '+money(o.totals.total)+' in cash.</li></ul>'+
+  '<h2 style="font-size:32px;margin:44px 0 6px">What happens next</h2><ul class="next"><li>We contact you by phone or WhatsApp to confirm your order and address.</li><li>We prepare and dispatch your abaya. Delivery takes '+esc(CONFIG.deliveryDays)+'.</li><li>The courier calls you on arrival. Check your piece'+(o.payment==="Online payment"?' and enjoy it.':', then pay '+money(o.totals.total)+(o.payment==="Card on delivery"?' by card.':' in cash.'))+'</li></ul>'+
   '<div class="actions no-print" style="justify-content:flex-start"><button class="btn" type="button" onclick="window.print()">Print this page</button><a class="btn" href="#/collections">Continue shopping</a></div></div></div>'};
 };
 
 function faqItems(){
   return [
   ["How do I place an order?","Choose a piece, select your size and add it to your cart. At checkout, enter your name, phone number and full address, then place your order. We will contact you to confirm."],
-  ["How does cash on delivery work?","You do not pay online. When your order arrives, you pay the courier in cash. Please keep the exact amount ready."],
+  ["What payment methods do you accept?","You can pay securely online by card at checkout, or choose cash on delivery and pay the courier when your order arrives. If you pay in cash, please keep the exact amount ready."],
   ["How long does delivery take?","Delivery takes "+CONFIG.deliveryDays+" after your order is confirmed."],
   ["How much is delivery?","Delivery is free on every order, across the UAE."],
   ["How do I choose my size?","Our abayas come in S, M, L, XL and XXL. Choose the size closest to your usual clothing size, and size up if you prefer a more relaxed, flowing fit. Message us if you would like help choosing."],
@@ -1089,8 +1154,8 @@ pages.contact=function(){
 
 pages.faq=function(){return {title:"FAQ | ROOHI",html:'<div class="on-sand"><div class="narrow" style="padding-bottom:clamp(70px,9vw,120px)"><div class="page-head" style="padding-left:0"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span>/</span>FAQ</nav><h1>Frequently asked questions</h1></div>'+faqHTML()+'</div></div>'+contactCTA()}};
 
-pages["how-to-order"]=function(){return {title:"How to order | ROOHI",html:'<div class="on-sand"><div class="wrap" style="padding-bottom:clamp(70px,9vw,120px)"><div class="page-head"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span>/</span>How to order</nav><h1>How to order</h1><p>Order online in minutes and pay in cash when your abaya arrives.</p></div>'+orderSteps()+
-  '<div class="narrow prose" style="margin:60px 0 0;margin-inline:0"><h2>Before you place your order</h2><ul><li>Check your size using the size guide on each product page.</li><li>Use the mobile number you can answer, so our team and the courier can reach you.</li><li>Write your full address: emirate, area, street, building or villa and apartment number. Add a landmark or map link if it helps.</li><li>Keep the exact cash amount ready for the courier.</li></ul></div>'+
+pages["how-to-order"]=function(){return {title:"How to order | ROOHI",html:'<div class="on-sand"><div class="wrap" style="padding-bottom:clamp(70px,9vw,120px)"><div class="page-head"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span>/</span>How to order</nav><h1>How to order</h1><p>Order online in minutes and pay by card, or in cash when your abaya arrives.</p></div>'+orderSteps()+
+  '<div class="narrow prose" style="margin:60px 0 0;margin-inline:0"><h2>Before you place your order</h2><ul><li>Check your size using the size guide on each product page.</li><li>Use the mobile number you can answer, so our team and the courier can reach you.</li><li>Write your full address: emirate, area, street, building or villa and apartment number. Add a landmark or map link if it helps.</li><li>If you choose cash on delivery, keep the exact amount ready for the courier.</li></ul></div>'+
   '<p style="margin-top:40px"><a class="btn solid" href="#/collections">Start shopping</a></p></div></div>'}};
 
 function policy(title,updated,sections){
@@ -1100,7 +1165,7 @@ pages.shipping=function(){return policy("Shipping &amp; delivery","",[
  ["Where we deliver","<p>We deliver to all emirates in the United Arab Emirates. Please enter your complete address at checkout so our courier can find you.</p>"],
  ["Delivery time","<p>Orders are delivered in "+esc(CONFIG.deliveryDays)+" after we confirm them with you. Delivery times may be longer during sales and public holidays.</p>"],
  ["Delivery fee","<p>Delivery is free on every order, across the United Arab Emirates.</p>"],
- ["Cash on delivery","<p>You pay the courier in cash when your order arrives. Please keep the exact amount ready. The courier will call you before arriving, so make sure your phone number is correct.</p>"],
+ ["Payment options","<p>Pay securely online by card at checkout, or choose cash on delivery and pay the courier when your order arrives. For cash, please keep the exact amount ready. The courier will call you before arriving, so make sure your phone number is correct.</p>"],
  ["Order confirmation","<p>After you place your order, we contact you by phone or WhatsApp to confirm your details. Orders are dispatched once confirmed.</p>"],
  ["Missed deliveries","<p>If we cannot reach you or nobody is available to receive the order, we will try to arrange a second delivery. Repeated failed deliveries may lead to your order being cancelled.</p>"]])};
 pages.privacy=function(){return policy("Privacy policy","",[
@@ -1112,7 +1177,7 @@ pages.privacy=function(){return policy("Privacy policy","",[
 pages.terms=function(){return policy("Terms &amp; conditions","",[
  ["Orders","<p>Placing an order is an offer to buy. An order is confirmed once we contact you and confirm your details and availability. We may cancel an order if an item is unavailable or we cannot reach you.</p>"],
  ["Prices","<p>All prices are in "+esc(CONFIG.currency)+". Prices may change without notice, but the price shown at the time you place your order applies to that order.</p>"],
- ["Payment","<p>Payment is made on delivery. The total shown at checkout is the amount to pay the courier.</p>"],
+ ["Payment","<p>You can pay online by card at checkout, or pay in cash on delivery. The total shown at checkout is the amount you pay.</p>"],
  ["Product images and colours","<p>We do our best to show our abayas accurately. Colours and prints may look slightly different on different screens.</p>"],
  ["Delivery","<p>Please see our <a href=\"#/shipping\">shipping &amp; delivery</a> page for delivery details.</p>"],
  ["Contact","<p>Questions about these terms? Email us at "+esc(CONFIG.email)+".</p>"]])};
@@ -1135,7 +1200,7 @@ function prHelpLink(orderId){
 function handlePaymentReturn(qs){
   var qp=new URLSearchParams(qs),orderId=qp.get("order")||"",cancelled=qp.get("cancelled");
   if(cancelled){
-    prSet("Payment cancelled","You have not been charged. Your items are still in your cart, so you can try again or pay on delivery instead.",
+    prSet("Payment cancelled","You have not been charged. Your items are still in your cart, so you can try again or choose cash on delivery instead.",
       '<a class="btn solid" href="#/checkout">Back to checkout</a>');
     return;
   }
@@ -1157,7 +1222,7 @@ function handlePaymentReturn(qs){
           finalizeOrder(pending,sent);
         });
       } else if(status==="failed"||status==="canceled"){
-        prSet("Payment was not completed","You have not been charged. Your items are still in your cart — you can try again or choose pay on delivery.",
+        prSet("Payment was not completed","You have not been charged. Your items are still in your cart — you can try again or choose cash on delivery.",
           '<a class="btn solid" href="#/checkout">Back to checkout</a>');
       } else if(tries<maxTries){
         setTimeout(check,2500);
