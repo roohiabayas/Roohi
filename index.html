@@ -170,6 +170,14 @@ main:focus{outline:none}
 .card .meta{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding-top:18px}
 .card h3{font-size:clamp(24px,2vw,30px);line-height:1.15}
 .card .price{white-space:nowrap;font-size:16px}
+.pbox{display:flex;flex-direction:column;align-items:flex-end;gap:4px;white-space:nowrap}
+.pbox .was{font-size:.82em;color:var(--taupe);text-decoration:line-through;text-decoration-thickness:1.5px;opacity:.85;line-height:1.2}
+.pbox .now{line-height:1.2}
+.off{display:inline-block;font-size:11.5px;letter-spacing:.04em;line-height:1;padding:4px 8px;border:1px solid var(--gold-deep);color:var(--gold-deep);border-radius:3px;white-space:nowrap}
+.pdp .pbox{flex-direction:row;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:14px 0 0}
+.pdp .pbox .was{font-size:19px}
+.pdp .pbox .now{font-size:26px}
+.pdp .pbox .off{font-size:13px;padding:5px 10px}
 .card p{margin:6px 0 0;font-size:15px;color:var(--taupe);line-height:1.55}
 .card .stock,.pdp .stock{display:block;margin-top:8px;font-size:13.5px;letter-spacing:.06em;color:var(--gold-deep)}
 .card .stock.oos,.pdp .stock.oos{color:var(--err)}
@@ -196,6 +204,12 @@ main:focus{outline:none}
 .pdp-img{aspect-ratio:3/4;overflow:hidden;background:var(--sand-2)}
 .pdp-img.oos img{opacity:.55}
 .pdp-img img{width:100%;height:100%;object-fit:cover}
+/* face-hiding crop: each photo can be zoomed (via --cs) from its bottom edge so the top, where the face is, falls outside the frame */
+.card img,.pdp-img img,.pdp-thumb img,.line img,.mini img{scale:var(--cs,1)}
+.line>a{display:block;width:110px;aspect-ratio:3/4;overflow:hidden}
+.line>a img{width:100%;height:100%}
+.mini .cw{display:block;width:60px;aspect-ratio:3/4;overflow:hidden}
+.mini .cw img{width:100%;height:100%}
 .pdp-thumbs{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
 .pdp-thumb{all:unset;box-sizing:border-box;cursor:pointer;width:64px;flex:none;aspect-ratio:3/4;overflow:hidden;border:1px solid var(--line);opacity:.6;transition:opacity .2s,border-color .2s}
 .pdp-thumb img{width:100%;height:100%;object-fit:cover;display:block}
@@ -243,7 +257,7 @@ table.sz th,table.sz td{border:1px solid var(--line);padding:9px 12px;text-align
 .cart-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr);gap:clamp(30px,5vw,70px);align-items:start;padding-bottom:clamp(70px,9vw,120px)}
 .line{display:grid;grid-template-columns:110px 1fr auto;gap:22px;padding:24px 0;border-top:1px solid var(--line)}
 .line:last-child{border-bottom:1px solid var(--line)}
-.line img{width:110px;aspect-ratio:3/4;object-fit:cover}
+.line img{object-fit:cover}
 .line h3{font-size:26px;line-height:1.1}
 .line .sub{color:var(--taupe);font-size:15px;margin:6px 0 14px}
 .line .rm{font-size:14px;color:var(--taupe)}
@@ -254,7 +268,7 @@ table.sz th,table.sz td{border:1px solid var(--line);padding:9px 12px;text-align
 .sum-row.total{border-top:1px solid var(--line);margin-top:10px;padding-top:16px;font-size:20px}
 .sum-note{font-size:14.5px;color:var(--taupe);margin:14px 0 20px}
 .mini{display:grid;grid-template-columns:60px 1fr auto;gap:14px;align-items:center;padding:8px 0;font-size:15px}
-.mini img{width:60px;aspect-ratio:3/4;object-fit:cover}
+.mini img{object-fit:cover}
 .mini small{display:block;color:var(--taupe);font-size:13.5px}
 .empty{text-align:center;padding:clamp(60px,9vw,120px) 0}
 .empty p{color:var(--taupe);margin:14px auto 30px;max-width:40ch}
@@ -364,7 +378,7 @@ footer .ar{text-align:left;font-family:var(--arabic);font-size:26px;color:var(--
   .summary{position:static}
   .fields{grid-template-columns:1fr}
   .line{grid-template-columns:84px 1fr;gap:16px}
-  .line img{width:84px}
+  .line>a{width:84px}
   .line .tot{grid-column:2;text-align:left}
   .box dl{grid-template-columns:1fr;gap:2px}.box dt{margin-top:10px}
   .fgrid{grid-template-columns:1fr;gap:34px}
@@ -495,6 +509,9 @@ var IMG = {
              numbers and dashes only, no spaces.
    name    – the piece's name, shown to customers.
    price   – the number shown to customers (in CONFIG.currency).
+   off     – (optional) discount % shown with a crossed-out original price,
+             e.g. off:20. If left out, 10 / 20 / 30 are used in rotation.
+             The crossed-out price is only for display; customers pay "price".
    stock   – how many pieces you have ready to ship right now. Set it
              to 0 to automatically show "Sold out" everywhere on the
              site. The number itself is also shown to customers.
@@ -701,10 +718,41 @@ var $=function(s,r){return (r||document).querySelector(s)};
 var $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 function money(n){return CONFIG.currency+" "+Number(n).toLocaleString("en-US")}
+/* ---------- discount display (display only: the real price used in cart/checkout is still p.price) ---------- */
+var OFF_CYCLE=[10,20,30]; /* used when a product has no "off" value of its own */
+function offPct(p){
+  var o=Number(p.off); if(o>0&&o<100) return o;
+  var i=PRODUCTS.indexOf(p); return OFF_CYCLE[(i<0?0:i)%OFF_CYCLE.length];
+}
+function wasPrice(p){return Math.round(Number(p.price)/(1-offPct(p)/100))}
+function priceHTML(p){
+  if(!(Number(p.price)>0)) return '<span class="price">'+money(p.price)+'</span>';
+  return '<span class="price pbox"><span class="was" aria-label="Original price">'+money(wasPrice(p))+'</span><span class="now">'+money(p.price)+'</span><span class="off">'+offPct(p)+'% OFF</span></span>';
+}
 function byId(id){return PRODUCTS.filter(function(p){return p.id===id})[0]}
 function inStock(p){return p&&Number(p.stock)>0}
 function pImgs(p){return (p.imgs||[]).filter(Boolean).slice(0,4)}
 function mainImg(p){return pImgs(p)[0]||""}
+/* ---------- hide faces: crop the top of these photos ----------
+   key   – photo file name without extension (dots and underscores are treated the same, so 1.4.avif = 1_4.avif)
+   value – [ how much of the TOP of the photo to cut off (%), horizontal centre of the model to keep (%) ]
+   To adjust a photo, change the first number (bigger = cuts more). To add a photo, add a line. */
+var FACE_CROP={
+  "1_4":[24,50],"1_5":[35,55],"4_1":[16,50],"9_2":[14,40],"13_0":[15,50],
+  "13_1":[24,55],"16_0":[19,50],"16_1":[26,55],"16_2":[19,50],"25_0":[26,55]
+};
+function cropVals(src){
+  var k=String(src||"").split("/").pop().replace(/\.[a-z0-9]+$/i,"").replace(/\./g,"_"),c=FACE_CROP[k];
+  if(!c) return null;
+  var t=c[0]/100,w=1-t,ox=Math.max(0,Math.min(1,(c[1]/100-w/2)/t));
+  return {s:(1/w).toFixed(3),o:(ox*100).toFixed(1)+"% 100%"};
+}
+function cropStyle(src){var v=cropVals(src);return v?";--cs:"+v.s+";transform-origin:"+v.o:""}
+function applyCrop(img,src){
+  var v=cropVals(src);
+  if(v){img.style.setProperty("--cs",v.s);img.style.transformOrigin=v.o}
+  else{img.style.removeProperty("--cs");img.style.transformOrigin=""}
+}
 function sizeText(sz){return sz==="Free size"?"Free size":"Size "+sz}
 function isFree(p){return p&&p.category==="free"}
 /* newest pieces for the home page: newest of each list, alternating, so new additions appear automatically */
@@ -781,8 +829,8 @@ function stockLabel(p){
 }
 function card(p){
   var oos=!inStock(p);
-  return '<a class="card'+(oos?' oos':'')+'" data-cat="'+(isFree(p)?'free':'sized')+'" href="#/piece/'+p.id+'"><div class="ph">'+(oos?'<span class="tag-oos">Sold out</span>':(isFree(p)?'<span class="tag-fs">Free size</span>':''))+'<img src="'+mainImg(p)+'" alt="'+esc(p.name)+' abaya" loading="lazy" style="object-position:'+(p.pos||"50% 50%")+'"><span class="quick">VIEW PIECE</span></div>'+
-  '<div class="meta"><h3>'+esc(p.name)+'</h3><span class="price">'+money(p.price)+'</span></div><p>'+esc(p.short)+'</p>'+stockLabel(p)+'</a>';
+  return '<a class="card'+(oos?' oos':'')+'" data-cat="'+(isFree(p)?'free':'sized')+'" href="#/piece/'+p.id+'"><div class="ph">'+(oos?'<span class="tag-oos">Sold out</span>':(isFree(p)?'<span class="tag-fs">Free size</span>':''))+'<img src="'+mainImg(p)+'" alt="'+esc(p.name)+' abaya" loading="lazy" style="object-position:'+(p.pos||"50% 50%")+cropStyle(mainImg(p))+'"><span class="quick">VIEW PIECE</span></div>'+
+  '<div class="meta"><h3>'+esc(p.name)+'</h3>'+priceHTML(p)+'</div><p>'+esc(p.short)+'</p>'+stockLabel(p)+'</a>';
 }
 function orderSteps(){
   return '<ol class="steps">'+
@@ -877,10 +925,10 @@ pages.collections=function(){
 
 function pdpGallery(p,oos){
   var imgs=pImgs(p); if(!imgs.length)imgs=[""];
-  var main='<div class="pdp-img'+(oos?' oos':'')+'" id="pdpMain">'+(oos?'<span class="tag-oos">Sold out</span>':'')+'<img src="'+imgs[0]+'" alt="'+esc(p.name)+' abaya" style="object-position:'+(p.pos||"50% 50%")+'"></div>';
+  var main='<div class="pdp-img'+(oos?' oos':'')+'" id="pdpMain">'+(oos?'<span class="tag-oos">Sold out</span>':'')+'<img src="'+imgs[0]+'" alt="'+esc(p.name)+' abaya" style="object-position:'+(p.pos||"50% 50%")+cropStyle(imgs[0])+'"></div>';
   if(imgs.length<2)return '<div class="pdp-gallery">'+main+'</div>';
   var thumbs='<div class="pdp-thumbs" role="tablist" aria-label="More photos of '+esc(p.name)+'">'+imgs.map(function(src,i){
-    return '<button type="button" class="pdp-thumb'+(i===0?' active':'')+'" data-img="'+i+'" aria-label="Photo '+(i+1)+' of '+imgs.length+'"'+(i===0?' aria-current="true"':'')+'><img src="'+src+'" alt="" loading="lazy"></button>';
+    return '<button type="button" class="pdp-thumb'+(i===0?' active':'')+'" data-img="'+i+'" aria-label="Photo '+(i+1)+' of '+imgs.length+'"'+(i===0?' aria-current="true"':'')+'><img src="'+src+'" alt="" loading="lazy" style="'+cropStyle(src).slice(1)+'"></button>';
   }).join('')+'</div>';
   return '<div class="pdp-gallery">'+main+thumbs+'</div>';
 }
@@ -909,7 +957,7 @@ pages.piece=function(id){
   return {title:p.name+" | ROOHI", html:
   '<div class="on-sand"><div class="wrap"><div class="page-head" style="padding-bottom:26px"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span>/</span><a href="#/collections">Collections</a><span>/</span>'+esc(p.name)+'</nav></div>'+
   '<div class="pdp">'+pdpGallery(p,oos)+
-  '<div><h1>'+esc(p.name)+'</h1><p class="price">'+money(p.price)+'</p>'+stockLabel(p)+'<p class="short">'+esc(p.short)+'</p>'+
+  '<div><h1>'+esc(p.name)+'</h1>'+priceHTML(p).replace('<span class="price pbox">','<p class="price pbox">').replace(/<\/span>$/,'</p>')+stockLabel(p)+'<p class="short">'+esc(p.short)+'</p>'+
   buyBlock+
   '<div class="accs"><details class="acc" id="size-guide"><summary>Size guide</summary><div class="body"><p>Our abayas are available in S, M, L, XL and XXL, following a relaxed, flowing fit typical of premium abayas. Choose the size closest to your usual clothing size.</p><p>Not sure which to pick? If you are between two sizes, we recommend sizing up for a more relaxed, flowing look. Message us if you would like help choosing.</p>'+(isFree(p)?'<p>This piece is Free size: a single relaxed size, so there is nothing to choose.</p>':'')+'</div></details>'+
   '<details class="acc"><summary>Care</summary><div class="body"><p>Please follow the care label. We recommend dry cleaning for embellished, printed and lace pieces, and storing your abaya on a hanger.</p></div></details>'+
@@ -922,7 +970,7 @@ pages.piece=function(id){
       var t=e.target.closest("[data-q],[data-add],[data-buy],[data-open],[data-img]"); if(!t)return;
       if(t.dataset.img!=null){
         var i=+t.dataset.img; if(!imgs[i])return;
-        $("#pdpMain img").src=imgs[i];
+        var mi=$("#pdpMain img");mi.src=imgs[i];applyCrop(mi,imgs[i]);
         $$(".pdp-thumb",root).forEach(function(b){var on=b===t;b.classList.toggle("active",on);if(on)b.setAttribute("aria-current","true");else b.removeAttribute("aria-current")});
       }
       else if(t.dataset.q){qty=Math.max(1,Math.min(10,qty+Number(t.dataset.q)));$("#qv").textContent=qty}
@@ -944,7 +992,7 @@ pages.cart=function(){
   if(!cart.length) return {title:"Your cart | ROOHI",html:'<div class="on-sand"><div class="wrap empty"><h1 style="font-size:clamp(40px,5vw,64px)">Your cart is empty</h1><p>Browse the collections and add a piece you love.</p><a class="btn solid" href="#/collections">Shop the collections</a></div></div>'};
   var t=totals();
   var lines=cart.map(function(l,i){var p=byId(l.id);
-    return '<div class="line"><a href="#/piece/'+p.id+'"><img src="'+mainImg(p)+'" alt="'+esc(p.name)+'" style="object-position:'+(p.pos||"50% 50%")+'"></a><div><h3><a href="#/piece/'+p.id+'" style="text-decoration:none">'+esc(p.name)+'</a></h3><p class="sub">'+esc(sizeText(l.size))+' &middot; '+money(p.price)+' each</p>'+
+    return '<div class="line"><a href="#/piece/'+p.id+'"><img src="'+mainImg(p)+'" alt="'+esc(p.name)+'" style="object-position:'+(p.pos||"50% 50%")+cropStyle(mainImg(p))+'"></a><div><h3><a href="#/piece/'+p.id+'" style="text-decoration:none">'+esc(p.name)+'</a></h3><p class="sub">'+esc(sizeText(l.size))+' &middot; '+money(p.price)+' each</p>'+
     '<div class="qty"><button type="button" data-cq="'+i+'" data-d="-1" aria-label="Decrease quantity of '+esc(p.name)+'">&minus;</button><output>'+l.qty+'</output><button type="button" data-cq="'+i+'" data-d="1" aria-label="Increase quantity of '+esc(p.name)+'">+</button></div> '+
     '<button class="link rm" type="button" data-rm="'+i+'" style="margin-left:16px">Remove</button></div><div class="tot">'+money(lineTotal(l))+'</div></div>'}).join('');
   return {title:"Your cart | ROOHI",html:
@@ -967,7 +1015,7 @@ function fld(id,label,o){
 
 function summaryMini(){
   var t=totals();
-  return '<aside class="summary"><h2>Your order</h2>'+cart.map(function(l){var p=byId(l.id);return '<div class="mini"><img src="'+mainImg(p)+'" alt="" style="object-position:'+(p.pos||"50% 50%")+'"><div>'+esc(p.name)+'<small>'+esc(sizeText(l.size))+' &middot; Qty '+l.qty+'</small></div><span>'+money(lineTotal(l))+'</span></div>'}).join('')+
+  return '<aside class="summary"><h2>Your order</h2>'+cart.map(function(l){var p=byId(l.id);return '<div class="mini"><span class="cw"><img src="'+mainImg(p)+'" alt="" style="object-position:'+(p.pos||"50% 50%")+cropStyle(mainImg(p))+'"></span><div>'+esc(p.name)+'<small>'+esc(sizeText(l.size))+' &middot; Qty '+l.qty+'</small></div><span>'+money(lineTotal(l))+'</span></div>'}).join('')+
   '<div style="border-top:1px solid var(--line);margin-top:12px;padding-top:12px"><div class="sum-row"><span>Subtotal</span><span>'+money(t.sub)+'</span></div><div class="sum-row"><span>Delivery</span><span>Free</span></div><div class="sum-row total"><span>Total</span><strong style="font-weight:400">'+money(t.total)+'</strong></div></div>'+
   '<p class="sum-note"><a href="#/cart" class="link">Edit cart</a></p></aside>';
 }
