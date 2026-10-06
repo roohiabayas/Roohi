@@ -7,7 +7,7 @@
 <meta name="description" content="ROOHI – premium abayas. Pay by card or cash on delivery. عبايات روحي">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Tenor+Sans&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#15100c; --ink-2:#1e1711;
@@ -72,7 +72,7 @@ main:focus{outline:none}
 .link{background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:4px;color:inherit}
 
 /* ---------- Home hero ---------- */
-.hero{--hero-pos:50% 30%;position:relative;isolation:isolate;display:flex;align-items:center;min-height:calc(100svh - var(--nav-h));overflow:hidden;background:linear-gradient(100deg,#2a1e15 0%,#54402e 55%,#7a5f45 100%);color:#f6efe2}
+.hero{--hero-pos:50% 30%;position:relative;isolation:isolate;display:flex;align-items:center;min-height:calc(100svh - var(--nav-h));overflow:hidden;background:linear-gradient(100deg,#1c050c 0%,#33091a 55%,#4a1224 100%);color:#f6efe2}
 .hero-media{position:absolute;inset:0 0 0 auto;width:68%;z-index:-1;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 34%);mask-image:linear-gradient(90deg,transparent 0,#000 34%)}
 .hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--hero-pos)}
 .hero-copy{width:min(1280px,100% - 56px);margin-inline:auto;padding:clamp(56px,9vh,110px) 0}
@@ -93,18 +93,18 @@ main:focus{outline:none}
 }
 
 /* ---------- Collections hero (full-width banner, photo fades in left-to-right) ---------- */
-.coll-hero{position:relative;isolation:isolate;width:100%;aspect-ratio:21/9;min-height:340px;max-height:640px;overflow:hidden;background:linear-gradient(100deg,#241a12 0%,#392b1e 45%,#4a3928 100%)}
+.coll-hero{position:relative;isolation:isolate;width:100%;aspect-ratio:21/9;min-height:340px;max-height:640px;overflow:hidden;background:linear-gradient(100deg,#1c050c 0%,#290813 45%,#33091a 100%)}
 .coll-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:saturate(.85) brightness(1.05) contrast(.94);-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.5) 30%,#000 62%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.5) 30%,#000 62%)}
-.coll-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,15,10,.4) 0%,rgba(20,15,10,.12) 40%,rgba(20,15,10,0) 62%)}
+.coll-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(28,5,12,.55) 0%,rgba(28,5,12,.22) 40%,rgba(28,5,12,0) 62%)}
 .coll-hero-copy{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:center;width:min(1280px,100% - 56px);margin-inline:auto;color:#f6efe2}
 .coll-hero-copy .hero-sub{margin-bottom:16px}
 .coll-hero-copy h1{font-size:clamp(40px,6vw,84px);line-height:1;max-width:16ch}
 .coll-hero-copy p{font-style:italic;font-size:clamp(15px,1.3vw,18px);color:#eadfcc;margin:20px 0 0;max-width:32ch;line-height:1.6}
 .coll-hero-copy .div-line{display:block;width:48px;height:1px;background:rgba(246,239,226,.55);margin-top:28px}
 @media (max-width:820px){
-  .coll-hero{aspect-ratio:4/5;max-height:520px;background:#2a1e15}
+  .coll-hero{aspect-ratio:4/5;max-height:520px;background:#1c050c}
   .coll-hero img{-webkit-mask-image:none;mask-image:none}
-  .coll-hero::after{background:linear-gradient(0deg,rgba(20,15,10,.85) 0%,rgba(20,15,10,.45) 40%,rgba(20,15,10,.15) 75%)}
+  .coll-hero::after{background:linear-gradient(0deg,rgba(28,5,12,.85) 0%,rgba(28,5,12,.45) 40%,rgba(28,5,12,.15) 75%)}
   .coll-hero-copy{width:min(1280px,100% - 40px);justify-content:flex-end;padding-bottom:36px}
   .coll-hero-copy h1{font-size:clamp(38px,11vw,58px)}
 }
@@ -165,7 +165,7 @@ main:focus{outline:none}
 .tag-oos{position:absolute;top:14px;left:14px;z-index:2;background:#15100c;color:#ece3d3;font-size:12px;letter-spacing:.14em;padding:7px 13px}
 .card img{width:100%;height:100%;object-fit:cover;transition:transform 1.3s cubic-bezier(.2,.7,.2,1)}
 .card:hover img{transform:scale(1.04)}
-.card .quick{position:absolute;left:0;right:0;bottom:0;padding:14px;text-align:center;background:rgba(21,16,12,.88);color:#f6efe2;font-size:14px;letter-spacing:.16em;transform:translateY(100%);transition:transform .4s}
+.card .quick{position:absolute;left:0;right:0;bottom:0;padding:14px;text-align:center;background:rgba(51,9,26,.94);color:#fff;font-size:14px;letter-spacing:.16em;transform:translateY(100%);transition:transform .4s}
 .card:hover .quick,.card:focus-visible .quick{transform:none}
 .card .meta{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding-top:18px}
 .card h3{font-size:clamp(24px,2vw,30px);line-height:1.15}
@@ -186,7 +186,7 @@ main:focus{outline:none}
 /* detail band */
 .detail{position:relative;min-height:80vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
 .detail img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%}
-.detail::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(21,16,12,.92) 0%,rgba(21,16,12,.55) 32%,rgba(21,16,12,0) 62%)}
+.detail::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(28,5,12,.92) 0%,rgba(28,5,12,.55) 32%,rgba(28,5,12,0) 62%)}
 .detail .wrap{position:relative;z-index:2;padding-bottom:clamp(50px,7vw,100px)}
 .detail h2{font-size:clamp(38px,5.6vw,84px);line-height:1.05;max-width:16ch;color:#f6efe2}
 .detail p{margin:22px 0 0;max-width:44ch;color:var(--text-on-ink)}
@@ -366,7 +366,7 @@ footer .ar{text-align:left;font-family:var(--arabic);font-size:26px;color:var(--
   .cart-link .t{display:none}
   .hero{align-items:flex-end;min-height:min(92svh,780px)}
   .hero-media{inset:0;width:100%;-webkit-mask-image:none;mask-image:none}
-  .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(28,20,14,.92) 0%,rgba(28,20,14,.55) 45%,rgba(28,20,14,.05) 80%)}
+  .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(28,5,12,.92) 0%,rgba(28,5,12,.55) 45%,rgba(28,5,12,.05) 80%)}
   .hero-copy{width:min(1280px,100% - 40px);padding:0 0 64px}
   .hero-title{font-size:clamp(52px,15vw,84px)}
   .scroll-cue{display:none}
@@ -392,10 +392,77 @@ footer .ar{text-align:left;font-family:var(--arabic);font-size:26px;color:var(--
   .cards.two{grid-template-columns:1fr}
 }
 </style>
+<style>
+/* ROOHI theme: cream, burgundy, Playfair Display + Montserrat */
+:root,:root:not([data-theme="light"]),:root[data-theme="dark"]{
+  color-scheme:light;--wine:#5b1a2b;--wine-2:#74283b;--ann-h:34px;
+  --ink:#f6efe9;--ink-2:#efe6de;--sand:#fbf8f5;--sand-2:#efe4dc;
+  --gold:#5b1a2b;--gold-soft:#8c4a55;--gold-deep:#5b1a2b;--taupe:#7a665c;
+  --text-on-sand:#2a1a1c;--text-on-ink:#2a1a1c;--muted-on-ink:#6f5c55;
+  --field-bg:rgba(255,255,255,.7);--line:rgba(91,26,43,.2);
+  --serif:"Playfair Display","Didot",Georgia,serif;--sans:"Montserrat","Helvetica Neue",Arial,sans-serif}
+html{scroll-padding-top:calc(var(--nav-h) + var(--ann-h) + env(safe-area-inset-top,0px))}
+main{padding-top:calc(var(--nav-h) + var(--ann-h) + env(safe-area-inset-top,0px))}
+.hero{min-height:calc(100svh - var(--nav-h) - var(--ann-h))}
+.pdp-gallery,.summary{top:calc(var(--nav-h) + var(--ann-h) + 24px)}
+body{font-size:16px;line-height:1.65}
+h1,h2,h3{font-weight:500}
+.announce{height:var(--ann-h);display:flex;align-items:center;justify-content:center;background:var(--wine);color:#f6e9e6;font-size:11px;letter-spacing:.16em;text-align:center;padding:0 12px;white-space:nowrap;overflow:hidden}
+.nav{background:rgba(246,239,233,.97);border-bottom:1px solid var(--line)}
+.brand,.brand .w{color:var(--wine)}
+.brand .w{font-weight:500;letter-spacing:.1em}
+.btn{background:var(--wine);color:#fff;border-color:var(--wine);font-size:12.5px;letter-spacing:.14em;font-weight:500;padding:16px 32px}
+.btn:hover{background:transparent;color:var(--wine)}
+.hero .btn{border-color:#fff}.hero .btn:hover{background:#fff;color:var(--wine)}
+.trust{background:var(--sand);border-block:1px solid var(--line)}
+.trust ul{grid-template-columns:repeat(4,1fr);gap:20px;padding:22px 0;text-align:left}
+.trust li{display:flex;align-items:center;gap:14px;justify-content:center;color:var(--wine)}
+.trust strong{font-family:var(--sans);font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-on-sand)}
+.trust span{display:block;font-size:12.5px;color:var(--taupe)}
+footer{background:var(--wine);border-top:0;color:#e6d6d2}
+footer h4,footer .brand,footer .brand .w{color:#fff}
+footer .brand .s{color:#e6d6d2}footer .ar{color:#e8c9c9}footer a:hover{color:#fff}
+/* readability fixes for the cream theme */
+.menu a{color:var(--text-on-sand);font-weight:500}
+.menu a:hover,.menu a[aria-current="page"]{color:var(--wine);border-color:var(--wine)}
+.cart-link{color:var(--wine)}
+.burger span,.burger span::before,.burger span::after{background:var(--wine)}
+.nav .ar{color:var(--wine)}
+.hero-sub,.coll-hero-copy .hero-sub,.contact-cta .hero-sub{color:#ecd3d1}
+.filters button{color:var(--text-on-sand);border-color:var(--line)}
+.filters button:hover{background:rgba(91,26,43,.08)}
+.filters button[aria-pressed="true"],.filters button[aria-pressed="true"] small{background:var(--wine);border-color:var(--wine);color:#fff}
+.filters button[aria-pressed="true"] small{background:none}
+.sizes input:checked + span{background:var(--wine);color:#fff;border-color:var(--wine)}
+.toast{background:var(--wine);color:#fff;border-color:var(--wine)}
+.contact-cta{background:var(--wine)}
+.contact-cta,.contact-cta h2,.contact-cta p{color:#fff}
+.contact-cta .ar{color:#ecd3d1}
+.contact-cta .btn,.detail .btn{background:#fff;color:var(--wine);border-color:#fff}
+.contact-cta .btn:hover,.detail .btn:hover{background:transparent;color:#fff}
+footer .btn{background:#fff;color:var(--wine);border-color:#fff}
+.fbar{border-top-color:rgba(255,255,255,.2)}
+.on-sand .btn,.btn{background:var(--wine);color:#fff;border-color:var(--wine)}
+.on-sand .btn:hover,.btn:hover{background:transparent;color:var(--wine);border-color:var(--wine)}
+.hero .btn{background:var(--wine);color:#fff;border-color:#fff}
+.hero .btn:hover{background:#fff;color:var(--wine)}
+.contact-cta .btn,.detail .btn,footer .btn{background:#fff;color:var(--wine);border-color:#fff}
+.contact-cta .btn:hover,.detail .btn:hover,footer .btn:hover{background:transparent;color:#fff;border-color:#fff}
+.contact-list b{color:#ecd3d1}
+.pdp-img{position:relative;touch-action:pan-y}
+.pdp-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:42px;height:42px;display:grid;place-items:center;border:0;border-radius:50%;background:rgba(251,248,245,.92);color:var(--wine);cursor:pointer;box-shadow:0 2px 10px rgba(42,26,28,.18);transition:background .2s,color .2s}
+.pdp-arrow:hover{background:var(--wine);color:#fff}
+.pdp-arrow.prev{left:12px}.pdp-arrow.next{right:12px}
+.pdp-count{position:absolute;right:12px;bottom:12px;z-index:3;background:rgba(251,248,245,.92);color:var(--text-on-sand);font-size:12px;letter-spacing:.08em;padding:4px 10px;border-radius:20px}
+@media(max-width:560px){.pdp-arrow{width:36px;height:36px}}
+@media(max-width:900px){.trust ul{grid-template-columns:repeat(2,1fr);gap:18px 12px}.trust li{justify-content:flex-start}}
+@media(max-width:560px){:root{--ann-h:30px}.announce{font-size:9.5px;letter-spacing:.1em}.trust strong,.trust span{font-size:11.5px}.trust svg{width:26px;height:26px}}
+</style>
 </head>
 <body>
 
 <header class="nav">
+  <div class="announce">FREE DELIVERY ACROSS THE UAE &nbsp;·&nbsp; PAY BY CARD OR CASH ON DELIVERY</div>
   <div class="wrap">
     <a class="brand" href="#/" aria-label="ROOHI Premium Abayas, home">
       <span class="w">ROOHI</span><span class="s">ABAYAS &amp; BAGS</span>
@@ -474,9 +541,10 @@ var TEXT = {
   homePieces: 4,          // how many of your newest pieces appear on the home page
 
   trust: [
-    { title:"Card or cash payment", text:"Pay online by card, or cash on delivery" },
-    { title:"Free delivery", text:"In "+CONFIG.deliveryDays+", across the UAE" },
-    { title:"Crafted with care", text:"Premium fabrics, carefully finished" }
+    { title:"UAE delivery", text:"Free, in "+CONFIG.deliveryDays },
+    { title:"Secure checkout", text:"Card or cash on delivery" },
+    { title:"Crafted with care", text:"Premium fabrics, finished by hand" },
+    { title:"Customer support", text:"Here to help, any time" }
   ],
 
   detailHeading: "Effortless is the hardest thing to design.",
@@ -488,7 +556,7 @@ var TEXT = {
 
 /* Images (the build replaces these paths with embedded data) */
 var IMG = {
-  bag:"images/bag.jpg", sleeve:"images/sleeve.jpg", collectionsHero:"images/collections-hero.jpg"
+  bag:"images/muroon3.png", sleeve:"images/muroon2.png", collectionsHero:"images/muroon1.png"
 };
 
 /* =====================================================================
@@ -881,7 +949,11 @@ function orderSteps(){
   '<li><h3>Pay by card or cash</h3><p>We confirm your order and deliver in '+esc(CONFIG.deliveryDays)+'. Pay online by card, or pay in cash when it arrives.</p></li></ol>';
 }
 function trust(){
-  return '<div class="trust"><div class="wrap"><ul>'+TEXT.trust.map(function(t){return '<li><strong>'+esc(t.title)+'</strong><span>'+esc(t.text)+'</span></li>'}).join('')+'</ul></div></div>';
+  var IC=["<path d=\"M3 7h11v9H3zM14 10h4l3 3v3h-7zM7 19a1.6 1.6 0 1 0 0-.01M17 19a1.6 1.6 0 1 0 0-.01\"/>", "<rect x=\"5\" y=\"11\" width=\"14\" height=\"9\" rx=\"1.5\"/><path d=\"M8 11V8a4 4 0 0 1 8 0v3\"/>", "<path d=\"M12 3l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 16.4 6.8 19.2l1-5.9L3.5 9.2l5.9-.8z\"/>", "<path d=\"M4 13v-2a8 8 0 0 1 16 0v2M4 13h3v5H4zM20 13h-3v5h3zM17 18c0 2-2 2.5-5 2.5\"/>"];
+  var li=TEXT.trust.map(function(t,k){
+    return '<li><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+IC[k%IC.length]+'</svg><div><strong>'+esc(t.title)+'</strong><span>'+esc(t.text)+'</span></div></li>';
+  }).join('');
+  return '<div class="trust"><div class="wrap"><ul>'+li+'</ul></div></div>';
 }
 function contactCTA(){
   var b='';
@@ -913,10 +985,10 @@ pages.home=function(){
   '<div class="hero-copy"><p class="hero-sub">'+esc(TEXT.heroSub)+'</p><h1 class="hero-title">'+TEXT.heroTitle.map(esc).join('<br>')+'</h1><p class="hero-line">'+esc(TEXT.heroTagline)+'</p>'+
   '<div class="hero-cta"><a class="btn" href="#/abayas">'+esc(TEXT.heroButton)+' &rarr;</a></div></div>'+
   '<button type="button" class="scroll-cue" id="scrollCue" aria-label="Scroll down"><span>Scroll</span><i></i></button></section>'+
+  trust()+
   '<section class="on-sand" style="padding-top:clamp(70px,10vw,140px);padding-bottom:clamp(80px,10vw,140px)"><div class="wrap"><div class="sec-head"><h2>'+esc(TEXT.newArrivalsHeading)+'</h2></div><div class="cards">'+homePieces().map(card).join('')+'</div>'+
   '<p style="text-align:center;margin:60px 0 0;display:flex;gap:16px;justify-content:center;flex-wrap:wrap"><a class="btn" href="#/abayas">Shop abayas</a><a class="btn" href="#/bags">Shop bags</a></p></div></section>'+
   '<section class="detail on-ink"><img src="'+IMG.sleeve+'" width="1536" height="1024" loading="lazy" alt="Close view of a black abaya sleeve with a fine gold line and the ROOHI star"><div class="wrap"><h2>'+esc(TEXT.detailHeading)+'</h2><p>'+esc(TEXT.detailText)+'</p></div></section>'+
-  trust()+
   '<section class="section on-sand"><div class="wrap"><div class="sec-head"><h2>'+esc(TEXT.orderSectionHeading)+'</h2><p>'+esc(TEXT.orderSectionSub)+'</p></div>'+orderSteps()+'</div></section>',
   init:function(){
     var c=$("#scrollCue"); if(c)c.addEventListener("click",function(){var h=$(".hero");window.scrollTo({top:h.offsetTop+h.offsetHeight-(parseInt(getComputedStyle(document.documentElement).getPropertyValue("--nav-h"))||76),behavior:"smooth"})});
@@ -982,7 +1054,7 @@ pages.bags=function(){
 
 function pdpGallery(p,oos){
   var imgs=pImgs(p); if(!imgs.length)imgs=[""];
-  var main='<div class="pdp-img'+(oos?' oos':'')+'" id="pdpMain">'+(oos?'<span class="tag-oos">Sold out</span>':'')+'<img src="'+imgs[0]+'" alt="'+esc(p.name)+(isBag(p)?' bag':' abaya')+'" style="object-position:'+(p.pos||"50% 50%")+cropStyle(imgs[0])+'"></div>';
+  var main='<div class="pdp-img'+(oos?' oos':'')+'" id="pdpMain">'+(oos?'<span class="tag-oos">Sold out</span>':'')+'<img src="'+imgs[0]+'" alt="'+esc(p.name)+(isBag(p)?' bag':' abaya')+'" style="object-position:'+(p.pos||"50% 50%")+cropStyle(imgs[0])+'">'+(imgs.length>1?'<button type="button" class="pdp-arrow prev" data-nav="-1" aria-label="Previous photo"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="pdp-arrow next" data-nav="1" aria-label="Next photo"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button><span class="pdp-count" id="pdpCount">1 / '+imgs.length+'</span>':'')+'</div>';
   if(imgs.length<2)return '<div class="pdp-gallery">'+main+'</div>';
   var thumbs='<div class="pdp-thumbs" role="tablist" aria-label="More photos of '+esc(p.name)+'">'+imgs.map(function(src,i){
     return '<button type="button" class="pdp-thumb'+(i===0?' active':'')+'" data-img="'+i+'" aria-label="Photo '+(i+1)+' of '+imgs.length+'"'+(i===0?' aria-current="true"':'')+'><img src="'+src+'" alt="" loading="lazy" style="'+cropStyle(src).slice(1)+'"></button>';
@@ -1032,13 +1104,26 @@ pages._piece=function(id){
   '<section class="section on-sand" style="padding-top:0"><div class="wrap"><div class="sec-head"><h2>You may also like</h2><p></p></div><div class="cards" style="grid-template-columns:repeat(3,minmax(0,1fr))">'+others.map(card).join('')+'</div></div></section>', init:function(){
     var qty=1,root=$(".pdp"),imgs=pImgs(p);
     root.addEventListener("click",pdpClick);
+    var cur=0;
+    function showImg(i){
+      if(imgs.length<2)return;
+      i=(i+imgs.length)%imgs.length; cur=i;
+      var mi=$("#pdpMain img");mi.src=imgs[i];applyCrop(mi,imgs[i]);
+      var ct=$("#pdpCount");if(ct)ct.textContent=(i+1)+" / "+imgs.length;
+      $$(".pdp-thumb",root).forEach(function(b,k){var on=k===i;b.classList.toggle("active",on);if(on)b.setAttribute("aria-current","true");else b.removeAttribute("aria-current")});
+    }
+    var pm=$("#pdpMain");
+    if(pm&&imgs.length>1){
+      var sx=null,sy=0;
+      pm.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+      pm.addEventListener("touchend",function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;sx=null;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))showImg(cur+(dx<0?1:-1))});
+      pm.tabIndex=0;
+      pm.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")showImg(cur-1);if(e.key==="ArrowRight")showImg(cur+1)});
+    }
     function pdpClick(e){
-      var t=e.target.closest("[data-q],[data-add],[data-buy],[data-open],[data-img]"); if(!t)return;
-      if(t.dataset.img!=null){
-        var i=+t.dataset.img; if(!imgs[i])return;
-        var mi=$("#pdpMain img");mi.src=imgs[i];applyCrop(mi,imgs[i]);
-        $$(".pdp-thumb",root).forEach(function(b){var on=b===t;b.classList.toggle("active",on);if(on)b.setAttribute("aria-current","true");else b.removeAttribute("aria-current")});
-      }
+      var t=e.target.closest("[data-q],[data-add],[data-buy],[data-open],[data-img],[data-nav]"); if(!t)return;
+      if(t.dataset.nav!=null){showImg(cur+Number(t.dataset.nav))}
+      else if(t.dataset.img!=null){showImg(+t.dataset.img)}
       else if(t.dataset.q){qty=Math.max(1,Math.min(10,qty+Number(t.dataset.q)));$("#qv").textContent=qty}
       else if(t.dataset.open){e.preventDefault();var d=$("#size-guide");d.open=true;d.scrollIntoView({behavior:"smooth",block:"center"})}
       else{
