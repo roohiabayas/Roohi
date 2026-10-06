@@ -775,7 +775,8 @@ function mainImg(p){return pImgs(p)[0]||""}
    To adjust a photo, change the first number (bigger = cuts more). To add a photo, add a line. */
 var FACE_CROP={
   "1_4":[24,50],"1_5":[35,55],"4_1":[16,50],"9_2":[14,40],"13_0":[15,50],
-  "13_1":[24,55],"16_0":[19,50],"16_1":[26,55],"16_2":[19,50],"25_0":[26,55]
+  "13_1":[24,55],"16_0":[19,50],"16_1":[26,55],"16_2":[19,50],"25_0":[26,55],
+  "29_0":[23,52],"29_3":[26,55],"30_0":[22,49],"30_1":[32,53],"30_3":[23,50]
 };
 function cropVals(src){
   var k=String(src||"").split("/").pop().replace(/\.[a-z0-9]+$/i,"").replace(/\./g,"_"),c=FACE_CROP[k];
@@ -929,9 +930,12 @@ function newRow(list,label){
 }
 pages.abayas=function(){
   var nS=REGULAR_PRODUCTS.length,nF=FREE_SIZE_PRODUCTS.length;
-  var list=ABAYAS.map(function(p,i){return {p:p,i:i}}).sort(function(a,b){
+  /* order = newest first across ALL abayas (sized and free size mixed together).
+     1) an "added" date on the piece wins if you set one; 2) otherwise the photo number (29.0.avif -> 29) shows the order you added them; 3) otherwise list position */
+  function seqNo(p){var im=pImgs(p);for(var k=0;k<im.length;k++){var m=String(im[k]).split("/").pop().match(/^(\d+)[._]\d/);if(m)return Number(m[1])}return 0}
+  var list=ABAYAS.map(function(p,i){return {p:p,i:i,n:seqNo(p)}}).sort(function(a,b){
     var da=a.p.added?Date.parse(a.p.added):0,db=b.p.added?Date.parse(b.p.added):0;
-    return db!==da?db-da:b.i-a.i;
+    return db!==da?db-da:(b.n!==a.n?b.n-a.n:b.i-a.i);
   }).map(function(x){return x.p});
   var tabs='<div class="filters coll-fade" role="group" aria-label="Filter collections">'+
     '<button type="button" data-f="all" aria-pressed="true">All<small>'+(nS+nF)+'</small></button>'+
@@ -940,7 +944,7 @@ pages.abayas=function(){
   return {title:"Abayas | ROOHI", html:
   '<section class="coll-hero"><img src="'+IMG.collectionsHero+'" width="1944" height="809" loading="lazy" alt="A woman in a black embroidered ROOHI abaya holding a cream shopping bag beside a courtyard fountain"><div class="coll-hero-copy"><p class="hero-sub">EXPLORE OUR</p><h1>Abayas</h1><p>Timeless abayas for every moment, every mood, every you.</p><span class="div-line"></span></div></section>'+
   '<div class="on-sand"><div class="wrap"><div class="page-head" style="padding-top:clamp(30px,4vw,50px)"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span>/</span>Abayas</nav></div>'+
-  newRow(ABAYAS,TEXT.newArrivalsHeading)+'<div class="sec-head"><h2>All abayas</h2></div>'+tabs+'<p class="filter-note" id="fnote" hidden>Free size pieces come in one size, so there is nothing to choose.</p>'+
+  '<div class="sec-head" style="margin-top:clamp(30px,4vw,50px)"><h2>All abayas</h2></div>'+tabs+'<p class="filter-note" id="fnote" hidden>Free size pieces come in one size, so there is nothing to choose.</p>'+
   '<div class="cards" id="grid" style="padding-bottom:clamp(70px,9vw,130px)">'+list.map(card).join('')+'</div></div></div>',
   init:function(){
     var bar=$(".filters"); if(!bar)return;
