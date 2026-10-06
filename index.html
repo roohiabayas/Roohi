@@ -475,6 +475,11 @@ footer .btn{background:#fff;color:var(--wine);border-color:#fff}
 .ann-arrow{flex:none;background:transparent;border:0;color:inherit;font-size:20px;line-height:1;cursor:pointer;padding:0 8px;opacity:.75}
 .ann-arrow:hover{opacity:1}
 @media(max-width:560px){.ann-slide svg{width:15px;height:15px}.ann-arrow{padding:0 4px}}
+
+/* bags banner: keep the bags in frame, fade the left side behind the text */
+.coll-hero--bags img{object-position:70% 50%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.45) 28%,#000 60%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.45) 28%,#000 60%)}
+.coll-hero--bags::after{background:linear-gradient(90deg,rgba(28,5,12,.7) 0%,rgba(28,5,12,.35) 38%,rgba(28,5,12,0) 64%)}
+@media(max-width:820px){.coll-hero--bags img{object-position:78% 50%;-webkit-mask-image:none;mask-image:none}.coll-hero--bags::after{background:linear-gradient(0deg,rgba(28,5,12,.88) 0%,rgba(28,5,12,.5) 42%,rgba(28,5,12,.15) 75%)}}
 </style>
 </head>
 <body>
@@ -574,7 +579,7 @@ var TEXT = {
 
 /* Images (the build replaces these paths with embedded data) */
 var IMG = {
-  bag:"images/muroon3.png", sleeve:"images/muroon2.png", collectionsHero:"images/muroon1.png"
+  bag:"images/muroon3.png", sleeve:"images/muroon2.png", collectionsHero:"images/muroon1.png", bagsHero:"images/muroon4.png"
 };
 
 /* =====================================================================
@@ -1067,7 +1072,8 @@ pages.bags=function(){
   var body=list.length?newRow(BAG_PRODUCTS,TEXT.newArrivalsHeading)+'<div class="sec-head"><h2>All bags</h2></div><div class="cards" style="padding-bottom:clamp(70px,9vw,130px)">'+list.map(card).join('')+'</div>'
     :'<div class="empty" style="padding:clamp(50px,7vw,100px) 0"><h2>Bags are coming soon</h2><p>Our bag collection is on its way. Message us to hear first.</p><a class="btn solid" href="#/contact">Contact us</a></div>';
   return {title:"Bags | ROOHI", html:
-  '<div class="on-sand"><div class="wrap"><div class="page-head" style="padding-top:clamp(30px,4vw,50px)"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span>/</span>Bags</nav><h1>Bags</h1><p>Refined bags to complete every abaya.</p></div>'+body+'</div></div>'};
+  '<section class="coll-hero coll-hero--bags"><img src="'+IMG.bagsHero+'" width="1983" height="793" loading="lazy" alt="A collection of burgundy leather ROOHI bags with gold hardware on a stone plinth"><div class="coll-hero-copy"><p class="hero-sub">EXPLORE OUR</p><h1>Bags</h1><p>Refined bags to complete every abaya.</p><span class="div-line"></span></div></section>'+
+  '<div class="on-sand"><div class="wrap"><div class="page-head" style="padding-top:clamp(30px,4vw,50px)"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span>/</span>Bags</nav></div>'+body+'</div></div>'};
 };
 
 function pdpGallery(p,oos){
