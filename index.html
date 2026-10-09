@@ -480,6 +480,109 @@ footer .btn{background:#fff;color:var(--wine);border-color:#fff}
 .coll-hero--bags img{object-position:70% 50%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.45) 28%,#000 60%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.45) 28%,#000 60%)}
 .coll-hero--bags::after{background:linear-gradient(90deg,rgba(28,5,12,.7) 0%,rgba(28,5,12,.35) 38%,rgba(28,5,12,0) 64%)}
 @media(max-width:820px){.coll-hero--bags img{object-position:78% 50%;-webkit-mask-image:none;mask-image:none}.coll-hero--bags::after{background:linear-gradient(0deg,rgba(28,5,12,.88) 0%,rgba(28,5,12,.5) 42%,rgba(28,5,12,.15) 75%)}}
+
+/* ---------- offers ---------- */
+.offers{padding:clamp(40px,6vw,80px) 0 0}
+.ohead{text-align:center;margin:0 auto 32px}
+.ohead .oeb{display:inline-block;font-size:12px;letter-spacing:.34em;color:var(--gold-deep)}
+.ohead h2{font-size:clamp(34px,5vw,56px);margin:10px 0 6px;line-height:1.05}
+.ohead p{margin:0;color:var(--taupe);font-size:16px}
+.ogrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.ocard{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-height:clamp(440px,38vw,530px);padding:34px 22px;overflow:hidden;text-decoration:none;text-align:center;color:#fff6e8;background:#2a0a14}
+.ocard>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:brightness(1.2) saturate(1.1);transition:transform 1s cubic-bezier(.2,.6,.2,1)}
+.ocard::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(30,6,14,.3) 0%,rgba(30,6,14,.1) 26%,rgba(24,5,11,.8) 62%,rgba(20,4,9,.96) 100%)}
+.ocard::after{content:"";position:absolute;inset:12px;border:1px solid rgba(232,200,130,.7);pointer-events:none;transition:inset .4s}
+.ocard.feat::after{border:2px solid #f0cf8a}
+.ocard:hover>img{transform:scale(1.06)}
+.ocard:hover::after{inset:8px}
+.ocard .tag{position:absolute;top:30px;left:50%;transform:translateX(-50%);white-space:nowrap;background:linear-gradient(135deg,#f6dc9f,#d9a94f);color:#2a0a14;font-size:11.5px;font-weight:700;letter-spacing:.2em;padding:9px 16px;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.ocard .nm{font-family:var(--serif);font-size:clamp(22px,2.2vw,28px);letter-spacing:.16em;color:#f6dc9f}
+.ocard .hk{font-size:15px;margin-top:6px;letter-spacing:.03em}
+.ocard .pr{display:flex;align-items:baseline;justify-content:center;gap:14px;margin-top:14px}
+.ocard .pr s{font-size:18px;color:#d8c7b0}
+.ocard .pr b{font-family:var(--serif);font-weight:500;font-size:clamp(60px,6vw,80px);line-height:.95;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.5)}
+.ocard .pr b i{font-style:normal;font-family:inherit;font-size:15px;letter-spacing:.22em;color:#f6dc9f;margin-right:8px;vertical-align:top;position:relative;top:10px}
+.ocard .nt{font-size:14px;color:#f1e4cf;margin-top:8px}
+.ocard .cta{margin-top:22px;background:linear-gradient(135deg,#f6dc9f,#d9a94f);color:#2a0a14;font-size:12.5px;font-weight:700;letter-spacing:.22em;padding:15px 26px;transition:transform .25s,box-shadow .25s}
+.ocard:hover .cta{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.4)}
+.oauto{text-align:center;margin:24px 0 0;font-size:14px;color:var(--taupe)}
+@media(max-width:760px){.ogrid{grid-template-columns:1fr;gap:16px}.ocard{min-height:400px}}
+.btn.gold{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.btn.gold:hover{background:var(--gold-deep);border-color:var(--gold-deep);color:#fff}
+.setcta{margin-top:30px;padding:24px;border:1px solid var(--gold-deep);background:var(--sand-2)}
+.setcta .k{font-family:var(--serif);font-size:30px;margin:0;line-height:1.1}
+.setcta .sub{margin:0 0 18px;color:var(--taupe);font-size:15.5px}
+.setcta .k+.sub{margin-top:6px}
+.setcta .alt{margin:14px 0 0;text-align:center;font-size:15px}
+.setcta .alt.dim{margin-top:8px;color:var(--taupe);font-size:14px}
+.setcta.look{margin-top:22px}
+.sum-row.offer-row{color:var(--gold-deep)}
+.sm-back{position:fixed;inset:0;z-index:90;background:rgba(10,7,4,.72);display:flex;align-items:center;justify-content:center;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px))}
+.sm{position:relative;background:var(--sand);color:var(--text-on-sand);width:min(860px,100%);max-height:100%;overflow:auto;padding:30px;border:1px solid var(--gold-deep)}
+.sm h2{font-size:clamp(30px,5vw,40px);padding-right:40px}
+.sm-sub{margin:6px 0 0;color:var(--taupe);font-size:15.5px}
+.sm-x{position:absolute;top:8px;right:10px;width:44px;height:44px;background:none;border:0;font-size:32px;line-height:1;cursor:pointer;color:inherit}
+.sm-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:20px 0}
+.sm-it{background:none;color:inherit;font:inherit;cursor:pointer;border:1px solid var(--line);padding:6px;text-align:center;font-size:13.5px;line-height:1.35}
+.sm-it img{width:100%;aspect-ratio:3/4;object-fit:cover;margin-bottom:6px}
+.sm-it span,.sm-it small{display:block}
+.sm-it small{color:var(--taupe)}
+.sm-it[aria-pressed="true"]{border-color:var(--gold-deep);outline:2px solid var(--gold)}
+.sm-sum{margin:14px 0;font-size:16px}
+@media(max-width:640px){.sm{padding:22px 16px}.sm-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.setcta .was{opacity:.65;margin-right:2px}
+.setcta .now{color:var(--gold-deep);font-size:1.1em;font-weight:600}
+.offer-panel{display:grid;gap:10px;margin-top:26px}
+.offer-applied{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border:1px solid var(--gold-deep);background:var(--sand-2)}
+.offer-applied .tick{flex:none;width:26px;height:26px;border-radius:50%;background:var(--gold-deep);color:#fff;display:grid;place-items:center;font-size:14px}
+.offer-applied strong{display:block;font-family:var(--serif);font-size:20px;letter-spacing:.05em;font-weight:500}
+.offer-applied span:not(.tick){color:var(--taupe);font-size:15px}
+.offer-nudge{padding:14px 18px;border:1px dashed var(--gold-deep);font-size:15.5px;line-height:1.5}
+.offer-nudge a{color:inherit;font-weight:600}
+s.was{opacity:.6;margin-right:6px;font-size:.85em}
+.operks{list-style:none;margin:26px 0 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 30px}
+.operks li{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--taupe)}
+.operks li::before{content:"\2713";color:var(--gold-deep);margin-right:9px;font-weight:700}
+.offer-perk{font-size:14px;letter-spacing:.04em;color:var(--taupe);padding:2px 4px}
+.perk-line{margin:14px 0 0;text-align:center;font-size:14px;color:var(--taupe)}
+@media(max-width:760px){.operks{flex-direction:column;align-items:center;gap:8px}}
+.setcta.dark{position:relative;margin-top:34px;padding:34px 26px 24px;background:linear-gradient(160deg,#4a0f1f 0%,#2a0a14 100%);border:1px solid #d9a94f;color:#fff6e8;box-shadow:0 14px 34px rgba(42,10,20,.25)}
+.setcta .stag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);white-space:nowrap;background:linear-gradient(135deg,#f6dc9f,#d9a94f);color:#2a0a14;font-size:11px;font-weight:700;letter-spacing:.18em;padding:7px 14px}
+.setcta.dark .k{color:#fff;text-align:center;font-size:clamp(30px,3.4vw,38px)}
+.setcta.dark .sub{color:#eadfc9;text-align:center;margin-bottom:12px}
+.setcta .sprice{display:flex;align-items:baseline;justify-content:center;gap:12px;margin:2px 0 18px;flex-wrap:wrap}
+.setcta .sprice span{width:100%;text-align:center;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#f6dc9f}
+.setcta .sprice s{color:#cdbca2;font-size:18px}
+.setcta .sprice b{font-family:var(--serif);font-weight:500;font-size:46px;line-height:1;color:#f6dc9f}
+.setcta.dark .alt,.setcta.dark .alt.dim,.setcta.dark .perk-line{color:#eadfc9}
+.setcta.dark .alt a{color:#f6dc9f}
+.setcta .btn.gold{background:linear-gradient(135deg,#f6dc9f,#d9a94f);color:#2a0a14;font-weight:700;border-color:#d9a94f}
+.setcta .btn.gold:hover{background:linear-gradient(135deg,#fbe8b8,#e3b862);color:#2a0a14}
+.btn.ghost{background:transparent;color:#fff6e8;border:1px solid rgba(246,220,159,.7);margin-top:10px}
+.btn.ghost:hover{background:rgba(246,220,159,.14);color:#fff6e8}
+.setcta .lk{display:flex;gap:16px;align-items:center;margin-bottom:8px}
+.setcta .lk img{width:96px;height:120px;object-fit:cover;flex:none;border:1px solid rgba(246,220,159,.6)}
+.setcta .lk .k,.setcta .lk .sub{text-align:left}
+.setcta .lk .sub{margin:6px 0 4px}
+.setcta .lk .sprice{justify-content:flex-start;margin-bottom:0}
+.setcta .lk .sprice b{font-size:40px}
+.ocard .pr em,.setcta .sprice em{font-style:normal;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#f6dc9f;align-self:center}
+.sm-it small strong{color:var(--gold-deep);font-weight:600}
+.oauto{display:table;margin:26px auto 0;padding:11px 22px;border:1px solid var(--gold-deep);background:var(--sand-2);font-size:14.5px;color:var(--text-on-sand);text-align:center}
+.oauto span{color:var(--gold-deep);font-weight:700;margin-right:6px}
+.sm-auto{margin:12px 0 0;text-align:center;font-size:14px;color:var(--taupe)}
+.ocard .pct{display:flex;align-items:flex-start;justify-content:center;gap:4px;margin-top:14px;color:#fff}
+.ocard .pct b{font-family:var(--serif);font-weight:500;font-size:clamp(70px,7vw,96px);line-height:.92;text-shadow:0 2px 20px rgba(0,0,0,.5)}
+.ocard .pct i{font-style:normal;font-family:var(--serif);font-size:clamp(32px,3.2vw,44px);line-height:1;color:#f6dc9f;margin-top:6px}
+.ocard .pct em{font-style:normal;align-self:flex-end;font-size:15px;font-weight:600;letter-spacing:.3em;color:#f6dc9f;margin:0 0 12px 12px}
+.sticky-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;align-items:center;gap:14px;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--sand);border-top:1px solid var(--gold-deep);box-shadow:0 -8px 24px rgba(42,10,20,.16);transform:translateY(110%);transition:transform .3s ease}
+.sticky-bar.show{transform:none}
+.sb-info{flex:1;min-width:0;line-height:1.3}
+.sb-info strong{display:block;font-family:var(--serif);font-weight:500;font-size:19px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text-on-sand)}
+.sb-info span{font-size:14.5px;color:var(--taupe)}
+.sb-info s{opacity:.6;margin-right:6px}
+.sticky-bar .btn{width:auto;flex:none;padding:14px 20px;white-space:nowrap}
+@media(max-width:760px){.sticky-bar{display:flex}body.has-sticky{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}body.has-sticky .toast{bottom:calc(92px + env(safe-area-inset-bottom,0px))}}
 </style>
 </head>
 <body>
@@ -546,7 +649,21 @@ var CONFIG = {
   emirates: ["Abu Dhabi","Dubai","Sharjah","Ajman","Umm Al Quwain","Ras Al Khaimah","Fujairah"],
 
   /* Every size you sell. Turn a size on/off per-piece in PRODUCTS below. */
-  sizes: ["S","M","L","XL","XXL"]
+  sizes: ["S","M","L","XL","XXL"],
+
+  /* THE THREE OFFERS (applied automatically in the cart).
+     They work as a PERCENTAGE OFF THE BAGS, so they follow each bag's own price, including every
+     bag you add later. The abaya price is never discounted. Change the numbers or wording here.
+       duo  = % off when she buys any 2 bags
+       look = % off a bag when bought with an abaya
+       set  = % off both bags when bought with an abaya (2 bags + 1 abaya)
+     "bagFrom" is only used before any bag has a price. */
+  offers: {
+    duo:  { name:"BAG DUO",           text:"Any 2 Bags",             pct:25 },
+    look: { name:"COMPLETE THE LOOK", text:"Any Abaya + Any Bag",    pct:30 },
+    set:  { name:"ROOHI SET",         text:"Any Abaya + Any 2 Bags", pct:35 },
+    bagFrom: 39
+  }
 };
 
 
@@ -817,6 +934,67 @@ var FREE_SIZE_PRODUCTS = [
    BAGS – your bags collection (own page: #/bags)
    ===================================================================== */
 var BAG_PRODUCTS = [
+  { id:"noir-leopard", name:"Noir Leopard", price:39, stock:5,
+    imgs:["images/bag1.avif", "images/bag1.0.avif"],
+    pos:"50% 50%",
+    short:"A soft black leopard-print baguette bag with long slim straps and side ties." },
+
+  { id:"rose-buckle", name:"Rose Buckle", price:43, stock:3,
+    imgs:["images/bag2.avif", "images/bag2.1.avif"],
+    pos:"50% 50%",
+    short:"One short sentence shown on the shop cards." },
+
+  { id:"cocoa-bow", name:"Cocoa Bow", price:46, stock:4,
+    imgs:["images/bag3.avif", "images/bag3.1.avif"],
+    pos:"50% 50%",
+    short:"One short sentence shown on the shop cards." },
+
+  { id:"snow-leopard", name:"Snow Leopard", price:42, stock:3,
+    imgs:["images/bag4.avif", "images/bag4.1.avif", "images/bag4.2.avif"],
+    pos:"50% 50%",
+    short:"One short sentence shown on the shop cards." },
+
+  { id:"pearl-rib", name:"Pearl Rib", price:47, stock:2,
+    imgs:["images/bag5.avif", "images/bag5.1.avif"],
+    pos:"50% 50%",
+    short:"One short sentence shown on the shop cards." },
+
+  { id:"ribbon-duet", name:"Ribbon Duet", price:50, stock:2,
+    imgs:["images/bag6.avif", "images/bag6.1.avif","images/bag6,2.avif"],
+    pos:"50% 50%",
+    short:"One short sentence shown on the shop cards." },
+
+  { id:"mocha-knot", name:"Mocha Knot", price:48, stock:3,
+    imgs:["images/bag8.avif", "images/bag8.1.avif","images/bag8.2.avif"],
+    pos:"50% 50%",
+    short:"One short sentence shown on the shop cards." },
+
+  { id:"mink-cloud", name:"Mink Cloud", price:38, stock:3,
+    imgs:["images/bag7.avif", "images/bag7.1.avif"],
+    pos:"50% 50%",
+    short:"One short sentence shown on the shop cards." },
+
+  { id:"caramel-braid", name:"Caramel Braid", price:55, stock:2,
+    imgs:["images/bag9.avif", "images/bag9.1.avif", "images/bag9.2.avif"],
+    pos:"50% 50%",
+    short:"One short sentence shown on the shop cards." },
+
+  { id:"sand-crescent", name:"Sand Crescent", price:49, stock:2,
+    imgs:["images/bag10.avif"],
+    pos:"50% 50%",
+    short:"One short sentence shown on the shop cards." },
+
+  { id:"ivory-crochet", name:"Ivory Crochet", price:54, stock:4,
+    imgs:["images/bag11.avif", "images/bag11.1.avif", "images/bag11.2.avif"],
+    pos:"50% 50%",
+    short:"One short sentence shown on the shop cards." },
+
+  { id:"heritage-flap", name:"Heritage Flap", price:62, stock:2,
+    imgs:["images/bag12.avif", "images/bag12.1.avif"],
+    pos:"50% 50%",
+    short:"One short sentence shown on the shop cards." },
+
+
   /* Add your bags here. Same fields as an abaya, but no "sizes" line.
      Put the photos in the "images" folder, copy the block below, paste it
      above the closing "];" and change the values.
@@ -832,8 +1010,11 @@ var BAG_PRODUCTS = [
 var REGULAR_PRODUCTS = PRODUCTS.slice();
 FREE_SIZE_PRODUCTS.forEach(function(p){ p.category="free"; p.sizes={ "Free size":true }; });
 BAG_PRODUCTS.forEach(function(p){ p.category="bag"; p.sizes={ "One size":true }; });
+/* Third item of the ROOHI SET (e.g. a scarf). Same fields as a bag. Leave empty until you add it. */
+var EXTRA_PRODUCTS = [];
+EXTRA_PRODUCTS.forEach(function(p){ p.category="extra"; p.sizes={ "One size":true }; });
 var ABAYAS = REGULAR_PRODUCTS.concat(FREE_SIZE_PRODUCTS);
-PRODUCTS = ABAYAS.concat(BAG_PRODUCTS);
+PRODUCTS = ABAYAS.concat(BAG_PRODUCTS).concat(EXTRA_PRODUCTS);
 
 /* ===================================================================== */
 
@@ -886,6 +1067,16 @@ function isFree(p){return p&&p.category==="free"}
 function isBag(p){return p&&p.category==="bag"}
 function newest(list,n){return list.map(function(p,i){return {p:p,i:i}}).sort(function(a,b){var da=a.p.added?Date.parse(a.p.added):0,db=b.p.added?Date.parse(b.p.added):0;return db!==da?db-da:b.i-a.i}).slice(0,n).map(function(x){return x.p})}
 /* newest pieces for the home page: newest of each list, alternating, so new additions appear automatically */
+function newestAbayas(n){
+  function seqNo(p){var im=pImgs(p);for(var k=0;k<im.length;k++){var m=String(im[k]).split("/").pop().match(/^(\d+)[._]\d/);if(m)return Number(m[1])}return 0}
+  return ABAYAS.map(function(p,i){return {p:p,i:i,n:seqNo(p)}}).sort(function(a,b){
+    var da=a.p.added?Date.parse(a.p.added):0,db=b.p.added?Date.parse(b.p.added):0;
+    return db!==da?db-da:(b.n!==a.n?b.n-a.n:b.i-a.i);
+  }).slice(0,n).map(function(x){return x.p});
+}
+function homeRow(title,list,href,btn){
+  return list.length?'<div class="sec-head"><h2>'+esc(title)+'</h2></div><div class="cards">'+list.map(card).join('')+'</div><p style="text-align:center;margin:44px 0 0"><a class="btn" href="'+href+'">'+esc(btn)+'</a></p>':'';
+}
 function homePieces(){
   var n=Math.max(1,Number(TEXT.homePieces)||4),a=REGULAR_PRODUCTS.slice().reverse(),b=FREE_SIZE_PRODUCTS.slice().reverse(),ab=[],i=0;
   while(i<a.length||i<b.length){ if(i<a.length)ab.push(a[i]); if(i<b.length)ab.push(b[i]); i++; }
@@ -908,10 +1099,45 @@ var cart=store(true,"roohi_cart")||[];
 function saveCart(){store(false,"roohi_cart",cart);updateBadge()}
 function updateBadge(){var n=cart.reduce(function(a,l){return a+l.qty},0);var b=$("#badge");b.textContent=n;b.hidden=!n}
 function lineTotal(l){return byId(l.id).price*l.qty}
-function totals(){
-  var sub=cart.reduce(function(a,l){return a+lineTotal(l)},0);
-  return {sub:sub,ship:0,total:sub};
+function offerSave(sum,o){return Math.round(sum*o.pct/100)}
+function bagVaries(){var pr=BAG_PRODUCTS.map(function(p){return Number(p.price)}).filter(function(n){return n>0});return pr.length>1&&Math.min.apply(null,pr)!==Math.max.apply(null,pr)}
+function applyOffers(){
+  var O=CONFIG.offers,nA=0,B0=[];
+  cart.forEach(function(l){var p=byId(l.id);if(!p)return;for(var i=0;i<l.qty;i++){if(isBag(p))B0.push(Number(p.price));else if(p.category!=="extra")nA++}});
+  B0.sort(function(a,b){return b-a});
+  function run(k){
+    var a=nA,B=B0.slice(),out=[],disc=0;
+    function bundle(o,na,nb,limit){
+      var n=0,save=0;
+      while(n<limit&&a>=na&&B.length>=nb){
+        var sum=0,i;for(i=0;i<nb;i++)sum+=B[i];
+        var sv=offerSave(sum,o);if(sv<=0)break;
+        B.splice(0,nb);a-=na;n++;save+=sv;
+      }
+      if(n){out.push({name:o.name,n:n,save:save});disc+=save}
+    }
+    bundle(O.set,1,2,k);bundle(O.look,1,1,99);bundle(O.duo,0,2,99);
+    return {offers:out,disc:disc};
+  }
+  var best=run(0);
+  for(var k=1;k<=Math.min(nA,Math.floor(B0.length/2));k++){var r=run(k);if(r.disc>best.disc)best=r}
+  return best;
 }
+function totals(){
+  var sub=cart.reduce(function(a,l){return a+lineTotal(l)},0),o=applyOffers();
+  return {sub:sub,disc:o.disc,offers:o.offers,ship:0,total:sub-o.disc};
+}
+function linePriceHTML(l){
+  var p=byId(l.id),full=lineTotal(l);
+  if(!isBag(p)){var wp=wasPrice(p)*l.qty;return wp>full?'<s class="was">'+money(wp)+'</s> '+money(full):money(full)}
+  var t=totals(),bagSum=cart.reduce(function(a,x){return a+(isBag(byId(x.id))?lineTotal(x):0)},0);
+  if(!t.disc||!bagSum)return money(full);
+  var now=Math.round((full-t.disc*full/bagSum)*100)/100;
+  return now<full?'<s class="was">'+money(full)+'</s> '+money(now):money(full);
+}
+function offerNames(t){return (t.offers||[]).map(function(x){return x.name+(x.n>1?" x"+x.n:"")}).join(", ")}
+function discRows(t){return t.disc?'<div class="sum-row offer-row"><span>'+esc(offerNames(t))+'</span><span>&minus;'+money(t.disc)+'</span></div>':''}
+function bagFrom(){var pr=BAG_PRODUCTS.map(function(p){return Number(p.price)}).filter(function(n){return n>0});return pr.length?Math.min.apply(null,pr):CONFIG.offers.bagFrom}
 function addToCart(id,size,qty){
   var f=cart.filter(function(l){return l.id===id&&l.size===size})[0];
   if(f)f.qty=Math.min(10,f.qty+qty);else cart.push({id:id,size:size,qty:qty});
@@ -1009,7 +1235,10 @@ pages.home=function(){
   '<div class="hero-cta"><a class="btn" href="#/abayas">'+esc(TEXT.heroButton)+' &rarr;</a></div></div>'+
   '<button type="button" class="scroll-cue" id="scrollCue" aria-label="Scroll down"><span>Scroll</span><i></i></button></section>'+
   trust()+
-  '<section class="on-sand" style="padding-top:clamp(70px,10vw,140px);padding-bottom:clamp(80px,10vw,140px)"><div class="wrap"><div class="sec-head"><h2>'+esc(TEXT.newArrivalsHeading)+'</h2></div><div class="cards">'+homePieces().map(card).join('')+'</div>'+
+  '<section class="on-sand" style="padding-top:clamp(70px,10vw,140px);padding-bottom:clamp(80px,10vw,140px)"><div class="wrap">'+
+  '<div class="sec-head"><h2>'+esc(TEXT.newArrivalsHeading)+'</h2></div>'+
+  '<div class="cards">'+newestAbayas(4).map(card).join('')+'</div>'+
+  (BAG_PRODUCTS.length?'<div class="cards" style="margin-top:clamp(28px,3vw,40px)">'+newest(BAG_PRODUCTS,4).map(card).join('')+'</div>':'')+
   '<p style="text-align:center;margin:60px 0 0;display:flex;gap:16px;justify-content:center;flex-wrap:wrap"><a class="btn" href="#/abayas">Shop abayas</a><a class="btn" href="#/bags">Shop bags</a></p></div></section>'+
   '<section class="detail on-ink"><img src="'+IMG.sleeve+'" width="1536" height="1024" loading="lazy" alt="Close view of a black abaya sleeve with a fine gold line and the ROOHI star"><div class="wrap"><h2>'+esc(TEXT.detailHeading)+'</h2><p>'+esc(TEXT.detailText)+'</p></div></section>'+
   '<section class="section on-sand"><div class="wrap"><div class="sec-head"><h2>'+esc(TEXT.orderSectionHeading)+'</h2><p>'+esc(TEXT.orderSectionSub)+'</p></div>'+orderSteps()+'</div></section>',
@@ -1069,7 +1298,7 @@ pages.abayas=function(){
 
 pages.bags=function(){
   var list=newest(BAG_PRODUCTS,BAG_PRODUCTS.length);
-  var body=list.length?newRow(BAG_PRODUCTS,TEXT.newArrivalsHeading)+'<div class="sec-head"><h2>All bags</h2></div><div class="cards" style="padding-bottom:clamp(70px,9vw,130px)">'+list.map(card).join('')+'</div>'
+  var body=list.length?'<div class="sec-head"><h2>All bags</h2></div><div class="cards" style="padding-bottom:clamp(70px,9vw,130px)">'+list.map(card).join('')+'</div>'
     :'<div class="empty" style="padding:clamp(50px,7vw,100px) 0"><h2>Bags are coming soon</h2><p>Our bag collection is on its way. Message us to hear first.</p><a class="btn solid" href="#/contact">Contact us</a></div>';
   return {title:"Bags | ROOHI", html:
   '<section class="coll-hero coll-hero--bags"><img src="'+IMG.bagsHero+'" width="1983" height="793" loading="lazy" alt="A collection of burgundy leather ROOHI bags with gold hardware on a stone plinth"><div class="coll-hero-copy"><p class="hero-sub">EXPLORE OUR</p><h1>Bags</h1><p>Refined bags to complete every abaya.</p><span class="div-line"></span></div></section>'+
@@ -1085,6 +1314,132 @@ function pdpGallery(p,oos){
   }).join('')+'</div>';
   return '<div class="pdp-gallery">'+main+thumbs+'</div>';
 }
+
+/* ---------- offers: strip, "make it a set" picker, cart nudge ---------- */
+function perkList(){var p=CONFIG.payments||{},a=["Free shipping &amp; handling"];if(p.cod)a.push("Cash on delivery");if(p.online)a.push("Secure online payment");a.push("Delivery in "+esc(CONFIG.deliveryDays));return a}
+function perksHTML(cls){return '<ul class="'+cls+'">'+perkList().map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>'}
+function setBoxBag(p){
+  var O=CONFIG.offers,price=Number(p.price),save=offerSave(price,O.look),now=price-save;
+  return '<div class="setcta dark">'+(save>0?'<span class="stag">PAIR IT &middot; SAVE '+money(save)+'</span>':'')+
+    '<p class="k">Make it a set &#129293;</p><p class="sub">Add an Abaya and save on your complete look.</p>'+
+    (save>0?'<p class="sprice"><span>This bag with any abaya</span><s>'+money(price)+'</s><b>'+money(now)+'</b></p>':'')+
+    '<button class="btn gold block" type="button" data-set="'+p.id+'">Make it a set &#129293;</button>'+
+    '<button class="btn ghost block" type="button" data-add="'+p.id+'">Add bag only &middot; '+money(price)+'</button>'+
+    '<p class="alt dim">Or buy any 2 bags and save '+O.duo.pct+'% &middot; <a href="#/bags">choose another bag</a></p>'+
+    '<p class="alt dim">&#10003; Offer is added to your cart automatically</p>'+
+    '<p class="alt dim">&#10003; Free shipping &amp; handling</p></div>';
+}
+function setBoxAbaya(p){
+  var O=CONFIG.offers,b=bagFrom(),save=offerSave(b,O.look),now=b-save,nb=newest(BAG_PRODUCTS.filter(inStock),1)[0];
+  return '<div class="setcta look dark">'+(save>0?'<span class="stag">BAG DEAL &middot; '+O.look.pct+'% OFF</span>':'')+
+    '<div class="lk">'+(nb?'<img src="'+mainImg(nb)+'" alt="" style="object-position:'+(nb.pos||"50% 50%")+'">':'')+
+    '<div><p class="k">Complete your look</p><p class="sub">Add a ROOHI Bag with this abaya and get '+O.look.pct+'% off</p><p class="sprice">'+(bagVaries()?'<em>from</em>':'')+(save>0?'<s>'+money(b)+'</s>':'')+'<b>'+money(now)+'</b></p></div></div>'+
+    '<button class="btn gold block" type="button" data-set="'+p.id+'">Add a bag &rarr;</button>'+
+    '<p class="perk-line">&#10003; Offer is added to your cart automatically</p><p class="perk-line" style="margin-top:6px">&#10003; Free shipping &amp; handling</p></div>';
+}
+function offerCalc(o,i){return {pct:o.pct,tag:i===0?'ANY 2 BAGS':i===1?'ABAYA + BAG':'BEST VALUE',sub:i===0?'off when you buy any 2 bags':i===1?'off your bag when you pair it with any abaya':'off both bags when you pair them with any abaya'}}
+function offersHTML(){
+  var O=CONFIG.offers;
+  /* [offer, link, photo, photo focal point, button text] */
+  var items=[[O.duo,"#/bags",IMG.bagsHero,"72% 50%","GRAB THE DUO"],[O.look,"#/abayas",IMG.bag,"50% 28%","BUILD YOUR LOOK"],[O.set,"#/abayas",IMG.collectionsHero,"74% 40%","GET THE SET"]];
+  return '<section class="on-sand offers" aria-label="ROOHI offers"><div class="wrap"><div class="ohead"><span class="oeb">ROOHI OFFERS</span><h2>Bag it. Pair it. Save.</h2><p>The more you pair, the more you save.</p></div><div class="ogrid">'+items.map(function(x,i){var o=x[0],c=offerCalc(o,i);
+    return '<a class="ocard'+(i===2?' feat':'')+'" href="'+x[1]+'"><img src="'+x[2]+'" alt="" loading="lazy" style="object-position:'+x[3]+'">'+
+      '<span class="tag">'+c.tag+'</span>'+
+      '<span class="nm">'+esc(o.name)+'</span><span class="hk">'+esc(o.text)+'</span>'+
+      '<span class="pct"><b>'+c.pct+'</b><i>%</i><em>OFF</em></span>'+
+      '<span class="nt">'+c.sub+'</span><span class="cta">'+x[4]+' &rarr;</span></a>'}).join('')+'</div><p class="oauto"><span aria-hidden="true">&#10003;</span> Offers are added to your cart automatically &middot; no code needed</p>'+'</div></section>';
+}
+["home"].forEach(function(k){
+  var f=pages[k];
+  pages[k]=function(){
+    var r=f.apply(this,arguments);
+    if(r&&r.html){var mk=k==="home"?'<section class="on-sand"':'<div class="on-sand">',i=r.html.indexOf(mk);if(i>-1)r.html=r.html.slice(0,i)+offersHTML()+r.html.slice(i)}
+    return r;
+  };
+});
+function closeSet(){var b=$("#smBack");if(b){b.remove();document.removeEventListener("keydown",smKey)}}
+function smKey(e){if(e.key==="Escape")closeSet()}
+window.addEventListener("hashchange",closeSet);
+function sizesFor(p){return isBag(p)?["One size"]:isFree(p)?["Free size"]:CONFIG.sizes.filter(function(s){return (p.sizes||{})[s]!==false})}
+/* ---------- sticky mobile bar, recently viewed, pairs well with ---------- */
+var ALSO_HEADING="Pairs well with"; /* change to "Customers also bought" once you have real purchase data */
+var RECENT_KEY="roohi_recent_v1";
+function getRecent(){try{var a=JSON.parse(localStorage.getItem(RECENT_KEY)||"[]");return Array.isArray(a)?a:[]}catch(e){return []}}
+function addRecent(id){try{var a=getRecent().filter(function(x){return x!==id});a.unshift(id);localStorage.setItem(RECENT_KEY,JSON.stringify(a.slice(0,12)))}catch(e){}}
+function recentList(excludeIds,n){return getRecent().map(byId).filter(function(p){return p&&p.category!=="extra"&&excludeIds.indexOf(p.id)<0}).slice(0,n)}
+function rowSection(title,sub,list,pt){
+  if(!list.length)return '';
+  return '<section class="section on-sand" style="padding-top:'+(pt||'0')+'"><div class="wrap"><div class="sec-head"><h2>'+esc(title)+'</h2><p>'+esc(sub||'')+'</p></div><div class="cards">'+list.map(card).join('')+'</div></div></section>';
+}
+function pairRow(p){
+  var list=(isBag(p)?newestAbayas(8):newest(BAG_PRODUCTS,8)).filter(function(x){return x.id!==p.id&&inStock(x)}).slice(0,4);
+  return rowSection(ALSO_HEADING,isBag(p)?'Add an abaya and save on your complete look.':'Add a bag and your offer applies automatically.',list);
+}
+function recentRow(p){return rowSection('Recently viewed','',recentList([p.id],4))}
+function stickyBar(p,oos){
+  if(oos)return;
+  var tgt=isBag(p)?$('.pdp [data-set]'):$('.pdp [data-add]');if(!tgt)return;
+  var wp=wasPrice(p),pr=Number(p.price),bar=document.createElement("div"),io=null;
+  bar.className="sticky-bar";bar.id="stickyBar";
+  bar.innerHTML='<div class="sb-info"><strong>'+esc(p.name)+'</strong><span>'+(!isBag(p)&&wp>pr?'<s>'+money(wp)+'</s>':'')+money(pr)+'</span></div><button type="button" class="btn gold">'+(isBag(p)?'Make it a set &#129293;':'Add to cart')+'</button>';
+  document.body.appendChild(bar);
+  function cleanup(){if(io)io.disconnect();bar.remove();document.body.classList.remove("has-sticky")}
+  window.addEventListener("hashchange",cleanup,{once:true});
+  bar.querySelector("button").addEventListener("click",function(){tgt.click()});
+  if("IntersectionObserver" in window){
+    io=new IntersectionObserver(function(es){var vis=!es[0].isIntersecting&&es[0].boundingClientRect.top<0;bar.classList.toggle("show",vis);document.body.classList.toggle("has-sticky",vis)},{threshold:0});
+    io.observe(tgt);
+  }
+}
+function tilePrice(p){
+  var pr=Number(p.price);
+  if(isBag(p)){var sv=offerSave(pr,CONFIG.offers.look);return sv>0?'<s class="was">'+money(pr)+'</s> <strong>'+money(pr-sv)+'</strong>':money(pr)}
+  var wp=wasPrice(p);return wp>pr?'<s class="was">'+money(wp)+'</s> <strong>'+money(pr)+'</strong>':money(pr);
+}
+function openSet(baseId,preSize){
+  var base=byId(baseId),baseBag=isBag(base),O=CONFIG.offers;
+  var list=(baseBag?ABAYAS:BAG_PRODUCTS).filter(inStock),picked=null,size=preSize||"";
+  closeSet();
+  var back=document.createElement("div");back.className="sm-back";back.id="smBack";
+  back.setAttribute("role","dialog");back.setAttribute("aria-modal","true");back.setAttribute("aria-label","Make it a set");
+  var tiles=list.map(function(p){return '<button type="button" class="sm-it" data-pick="'+p.id+'" aria-pressed="false"><img src="'+mainImg(p)+'" alt="" loading="lazy" style="object-position:'+(p.pos||"50% 50%")+cropStyle(mainImg(p))+'"><span>'+esc(p.name)+'</span><small>'+tilePrice(p)+'</small></button>'}).join('');
+  back.innerHTML='<div class="sm"><button type="button" class="sm-x" data-x aria-label="Close">&times;</button>'+
+    '<h2>'+(baseBag?'Make it a set &#129293;':'Complete your look')+'</h2>'+
+    '<p class="sm-sub">'+(baseBag?'Pick your abaya to go with the '+esc(base.name)+' bag.':'Pick a ROOHI bag to go with the '+esc(base.name)+' abaya.')+' Your bag is <strong>'+O.look.pct+'% off</strong> with an abaya.</p>'+
+    (list.length?'<div class="sm-grid">'+tiles+'</div>':'<p class="sm-sub">'+(baseBag?'No abayas':'No bags')+' available right now. <a href="#/'+(baseBag?'abayas':'bags')+'">Browse</a></p>')+
+    '<div id="smSize"></div><div id="smFoot"></div></div>';
+  document.body.appendChild(back);document.addEventListener("keydown",smKey);
+  function abaya(){return baseBag?picked:base}
+  function bag(){return baseBag?base:picked}
+  function draw(){
+    var a=abaya(),sz=$("#smSize",back),ft=$("#smFoot",back);
+    if(a&&!isBag(a)){var sl=sizesFor(a);if(sl.length===1)size=sl[0];if(sl.indexOf(size)<0)size="";
+      sz.innerHTML='<div class="opt"><div class="opt-label"><span id="mszl">'+(sl.length===1?'Size':'Select abaya size')+'</span></div><fieldset class="sizes" aria-labelledby="mszl">'+sl.map(function(s){return '<label><input type="radio" name="msize" value="'+s+'"'+(s===size?' checked':'')+'><span>'+s+'</span></label>'}).join('')+'</fieldset></div>'}
+    else sz.innerHTML='';
+    var ready=!!(picked&&a&&size),sum=a&&bag()?Number(a.price)+Number(bag().price):0,save=bag()?offerSave(Number(bag().price),O.look):0,tot=sum-save;
+    ft.innerHTML='<p class="sm-sum">'+(picked&&a&&bag()?(save>0?'You save '+money(save)+' &middot; ':'')+'Set total '+(save>0?'<s class="was">'+money(sum)+'</s> ':'')+'<strong>'+money(save>0?tot:sum)+'</strong>':'')+'</p><button type="button" class="btn gold block" data-addset'+(ready?'':' disabled')+'>'+(ready?'Add set to cart':picked?'Select a size':'Choose one above')+'</button><p class="sm-auto">&#10003; Offer is added to your cart automatically</p>';
+  }
+  back.addEventListener("click",function(e){
+    if(e.target===back||e.target.closest("[data-x]")){closeSet();return}
+    var pk=e.target.closest("[data-pick]");
+    if(pk){picked=byId(pk.dataset.pick);$$(".sm-it",back).forEach(function(b){b.setAttribute("aria-pressed",b===pk?"true":"false")});if(baseBag)size="";draw();return}
+    if(e.target.closest("[data-addset]")){var a=abaya(),b=bag();if(!a||!b||!size)return;addToCart(a.id,size,1);addToCart(b.id,"One size",1);closeSet();toast('Your set is in the cart. <a href="#/cart">View cart</a>')}
+  });
+  back.addEventListener("change",function(e){if(e.target.name==="msize"){size=e.target.value;draw()}});
+  draw();var x=$("[data-x]",back);if(x)x.focus();
+}
+function offerPanel(){
+  var t=totals(),a=0,b=0,h='',O=CONFIG.offers;
+  cart.forEach(function(l){var p=byId(l.id);if(!p)return;if(isBag(p))b+=l.qty;else if(p.category!=="extra")a+=l.qty});
+  (t.offers||[]).forEach(function(o){h+='<div class="offer-applied"><span class="tick" aria-hidden="true">&#10003;</span><div><strong>'+esc(o.name)+(o.n>1?' &times;'+o.n:'')+' applied automatically</strong><span>You are saving '+money(o.save)+'</span></div></div>'});
+  var msg=a>b?'Complete your look: add a ROOHI Bag and get <strong>'+O.look.pct+'% off</strong> it with your abaya. <a href="#/bags">Choose a bag</a>':
+          a>0&&a===b?'Add a second bag: get <strong>'+O.set.pct+'% off</strong> both bags with your abaya. <a href="#/bags">Choose a bag</a>':
+          b>a?'Make it a set: add an abaya and save on your complete look. <a href="#/abayas">Choose an abaya</a>':'';
+  if(msg)h+='<div class="offer-nudge">'+msg+'</div>';
+  h+='<div class="offer-perk">&#10003; Free shipping &amp; handling on every order</div>';
+  return '<div class="offer-panel">'+h+'</div>';
+}
+
 pages.piece=function(id){
   var r=pages._piece(id),p=byId(id); if(!r||!p||!r.html)return r;
   var bag=isBag(p);
@@ -1097,7 +1452,7 @@ pages.piece=function(id){
 pages._piece=function(id){
   var p=byId(id); if(!p) return pages.notfound();
   var oos=!inStock(p);
-  var others=PRODUCTS.filter(function(x){return x.id!==p.id&&isBag(x)===isBag(p)}).sort(function(a,b){return (isFree(b)===isFree(p))-(isFree(a)===isFree(p))}).slice(0,3);
+  var others=PRODUCTS.filter(function(x){return x.id!==p.id&&x.category!=="extra"&&isBag(x)===isBag(p)}).sort(function(a,b){return (isFree(b)===isFree(p))-(isFree(a)===isFree(p))}).slice(0,3);
   var pSizes=p.sizes||{};
   var sizeList=isBag(p)?["One size"]:isFree(p)?["Free size"]:CONFIG.sizes;
   var sizes=sizeList.map(function(s){
@@ -1110,10 +1465,15 @@ pages._piece=function(id){
     var msgLink=hasWA()?waLink("Hello ROOHI, I'd like to know when "+p.name+" will be back in stock."):"#/contact";
     buyBlock='<div class="notice" style="margin-top:32px"><strong>Currently sold out.</strong> This piece is not available right now. Message us to ask when it will be back in stock.</div>'+
     '<div class="buy"><a class="btn block"'+(hasWA()?' target="_blank" rel="noopener"':'')+' href="'+msgLink+'">Message us about this piece</a></div>';
+  } else if(isBag(p)){
+    var oo=CONFIG.offers;
+    buyBlock=setBoxBag(p)+
+    '<ul class="assure"><li>'+esc(pay.join(" or ").replace(/^./,function(c){return c.toUpperCase()}))+' available</li><li>Free delivery in '+esc(CONFIG.deliveryDays)+'</li></ul>';
   } else {
     buyBlock='<div class="opt"><div class="opt-label"><span id="szl">'+(isFree(p)||isBag(p)?'Size':'Select your size')+'</span><a href="#size-guide" data-open="size-guide" style="font-size:14px;color:var(--taupe)">Size guide</a></div><fieldset class="sizes" aria-labelledby="szl">'+sizes+'</fieldset><p class="err" id="szerr" role="alert"></p></div>'+
     '<div class="opt"><div class="opt-label"><span>Quantity</span></div><div class="qty"><button type="button" data-q="-1" aria-label="Decrease quantity">&minus;</button><output id="qv" aria-live="polite">1</output><button type="button" data-q="1" aria-label="Increase quantity">+</button></div></div>'+
     '<div class="buy"><button class="btn block" type="button" data-add="'+p.id+'">Add to cart</button><button class="btn block" type="button" data-buy="'+p.id+'">Buy now</button></div>'+
+    (isBag(p)||p.category==="extra"?'':setBoxAbaya(p))+
     '<ul class="assure"><li>'+esc(pay.join(" or ").replace(/^./,function(c){return c.toUpperCase()}))+' available</li><li>Free delivery in '+esc(CONFIG.deliveryDays)+'</li></ul>';
   }
   return {title:p.name+" | ROOHI", html:
@@ -1125,8 +1485,10 @@ pages._piece=function(id){
   '<details class="acc"><summary>Care</summary><div class="body"><p>Please follow the care label. We recommend dry cleaning for embellished, printed and lace pieces, and storing your abaya on a hanger.</p></div></details>'+
   '<details class="acc"><summary>Delivery &amp; payment</summary><div class="body"><p>Delivery takes '+esc(CONFIG.deliveryDays)+' and is free across the UAE. Pay securely by card online, or pay in cash to the courier when your order arrives.</p></div></details></div></div></div></div></div>'+
   '<section class="section on-sand" style="padding-top:0"><div class="wrap"><div class="sec-head"><h2>How to order</h2><p>Four steps, and you pay by card or cash.</p></div>'+orderSteps()+'</div></section>'+
-  '<section class="section on-sand" style="padding-top:0"><div class="wrap"><div class="sec-head"><h2>You may also like</h2><p></p></div><div class="cards" style="grid-template-columns:repeat(3,minmax(0,1fr))">'+others.map(card).join('')+'</div></div></section>', init:function(){
+  pairRow(p)+
+  '<section class="section on-sand" style="padding-top:0"><div class="wrap"><div class="sec-head"><h2>You may also like</h2><p></p></div><div class="cards" style="grid-template-columns:repeat(3,minmax(0,1fr))">'+others.map(card).join('')+'</div></div></section>'+recentRow(p), init:function(){
     var qty=1,root=$(".pdp"),imgs=pImgs(p);
+    addRecent(p.id);stickyBar(p,oos);
     root.addEventListener("click",pdpClick);
     var cur=0;
     function showImg(i){
@@ -1145,21 +1507,23 @@ pages._piece=function(id){
       pm.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")showImg(cur-1);if(e.key==="ArrowRight")showImg(cur+1)});
     }
     function pdpClick(e){
-      var t=e.target.closest("[data-q],[data-add],[data-buy],[data-open],[data-img],[data-nav]"); if(!t)return;
+      var t=e.target.closest("[data-q],[data-add],[data-buy],[data-open],[data-img],[data-nav],[data-set]"); if(!t)return;
       if(t.dataset.nav!=null){showImg(cur+Number(t.dataset.nav))}
       else if(t.dataset.img!=null){showImg(+t.dataset.img)}
       else if(t.dataset.q){qty=Math.max(1,Math.min(10,qty+Number(t.dataset.q)));$("#qv").textContent=qty}
       else if(t.dataset.open){e.preventDefault();var d=$("#size-guide");d.open=true;d.scrollIntoView({behavior:"smooth",block:"center"})}
+      else if(t.dataset.set){var s0=$('input[name="size"]:checked');openSet(t.dataset.set,s0?s0.value:"")}
       else{
-        var sel=$('input[name="size"]:checked');
-        if(!sel){$("#szerr").textContent="Please select a size before adding to cart.";$(".sizes").scrollIntoView({block:"center"});return}
-        $("#szerr").textContent="";
+        var sel=$('input[name="size"]:checked')||(isBag(p)?{value:"One size"}:null);
+        var se=$("#szerr");
+        if(!sel){if(se)se.textContent="Please select a size before adding to cart.";var sz=$(".sizes");if(sz)sz.scrollIntoView({block:"center"});return}
+        if(se)se.textContent="";
         addToCart(p.id,sel.value,qty);
         if(t.dataset.buy){location.hash="#/checkout"}
         else toast(esc(p.name)+' ('+esc(sizeText(sel.value).toLowerCase())+') added to your cart. <a href="#/cart">View cart</a>');
       }
     }
-    root.addEventListener("change",function(e){if(e.target.name==="size")$("#szerr").textContent=""});
+    root.addEventListener("change",function(e){if(e.target.name==="size"){var e2=$("#szerr");if(e2)e2.textContent=""}});
   }};
 };
 
@@ -1169,11 +1533,11 @@ pages.cart=function(){
   var lines=cart.map(function(l,i){var p=byId(l.id);
     return '<div class="line"><a href="#/piece/'+p.id+'"><img src="'+mainImg(p)+'" alt="'+esc(p.name)+'" style="object-position:'+(p.pos||"50% 50%")+cropStyle(mainImg(p))+'"></a><div><h3><a href="#/piece/'+p.id+'" style="text-decoration:none">'+esc(p.name)+'</a></h3><p class="sub">'+esc(sizeText(l.size))+' &middot; '+money(p.price)+' each</p>'+
     '<div class="qty"><button type="button" data-cq="'+i+'" data-d="-1" aria-label="Decrease quantity of '+esc(p.name)+'">&minus;</button><output>'+l.qty+'</output><button type="button" data-cq="'+i+'" data-d="1" aria-label="Increase quantity of '+esc(p.name)+'">+</button></div> '+
-    '<button class="link rm" type="button" data-rm="'+i+'" style="margin-left:16px">Remove</button></div><div class="tot">'+money(lineTotal(l))+'</div></div>'}).join('');
+    '<button class="link rm" type="button" data-rm="'+i+'" style="margin-left:16px">Remove</button></div><div class="tot">'+linePriceHTML(l)+'</div></div>'}).join('');
   return {title:"Your cart | ROOHI",html:
   '<div class="on-sand"><div class="wrap"><div class="page-head"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span>/</span>Cart</nav><h1>Your cart</h1></div>'+
-  '<div class="cart-grid"><div id="lines">'+lines+'<p style="margin-top:24px"><a href="#/collections" class="link">Continue shopping</a></p></div>'+
-  '<aside class="summary" aria-label="Order summary"><h2>Order summary</h2><div class="sum-row"><span>Subtotal</span><span>'+money(t.sub)+'</span></div><div class="sum-row"><span>Delivery</span><span>Free</span></div><div class="sum-row total"><span>Total</span><strong style="font-weight:400">'+money(t.total)+'</strong></div>'+
+  '<div class="cart-grid"><div id="lines">'+lines+offerPanel()+'<p style="margin-top:24px"><a href="#/collections" class="link">Continue shopping</a></p></div>'+
+  '<aside class="summary" aria-label="Order summary"><h2>Order summary</h2><div class="sum-row"><span>Subtotal</span><span>'+money(t.sub)+'</span></div>'+discRows(t)+'<div class="sum-row"><span>Shipping &amp; handling</span><span>Free</span></div><div class="sum-row total"><span>Total</span><strong style="font-weight:400">'+money(t.total)+'</strong></div>'+
   '<p class="sum-note">Choose how to pay at checkout: securely by card online, or in cash when your order arrives.</p><a class="btn block" href="#/checkout">Proceed to checkout</a></aside></div></div></div>'};
 };
 
@@ -1190,11 +1554,24 @@ function fld(id,label,o){
 
 function summaryMini(){
   var t=totals();
-  return '<aside class="summary"><h2>Your order</h2>'+cart.map(function(l){var p=byId(l.id);return '<div class="mini"><span class="cw"><img src="'+mainImg(p)+'" alt="" style="object-position:'+(p.pos||"50% 50%")+cropStyle(mainImg(p))+'"></span><div>'+esc(p.name)+'<small>'+esc(sizeText(l.size))+' &middot; Qty '+l.qty+'</small></div><span>'+money(lineTotal(l))+'</span></div>'}).join('')+
-  '<div style="border-top:1px solid var(--line);margin-top:12px;padding-top:12px"><div class="sum-row"><span>Subtotal</span><span>'+money(t.sub)+'</span></div><div class="sum-row"><span>Delivery</span><span>Free</span></div><div class="sum-row total"><span>Total</span><strong style="font-weight:400">'+money(t.total)+'</strong></div></div>'+
+  return '<aside class="summary"><h2>Your order</h2>'+cart.map(function(l){var p=byId(l.id);return '<div class="mini"><span class="cw"><img src="'+mainImg(p)+'" alt="" style="object-position:'+(p.pos||"50% 50%")+cropStyle(mainImg(p))+'"></span><div>'+esc(p.name)+'<small>'+esc(sizeText(l.size))+' &middot; Qty '+l.qty+'</small></div><span>'+linePriceHTML(l)+'</span></div>'}).join('')+
+  '<div style="border-top:1px solid var(--line);margin-top:12px;padding-top:12px"><div class="sum-row"><span>Subtotal</span><span>'+money(t.sub)+'</span></div>'+discRows(t)+'<div class="sum-row"><span>Shipping &amp; handling</span><span>Free</span></div><div class="sum-row total"><span>Total</span><strong style="font-weight:400">'+money(t.total)+'</strong></div></div>'+
   '<p class="sum-note"><a href="#/cart" class="link">Edit cart</a></p></aside>';
 }
 
+var _cartBase=pages.cart;
+pages.cart=function(){
+  var r=_cartBase.apply(this,arguments);
+  if(r&&r.html){
+    var ids=cart.map(function(l){return l.id}),hasA=false,hasB=false;
+    cart.forEach(function(l){var p=byId(l.id);if(!p)return;if(isBag(p))hasB=true;else hasA=true});
+    var pool=!cart.length?[]:hasA&&!hasB?newest(BAG_PRODUCTS,8):hasB&&!hasA?newestAbayas(8):newest(BAG_PRODUCTS,8).concat(newestAbayas(8));
+    var pairs=pool.filter(function(x){return ids.indexOf(x.id)<0&&inStock(x)}).slice(0,4);
+    var sub=hasA&&!hasB?'Add a bag and your offer applies automatically.':hasB&&!hasA?'Add an abaya and save on your complete look.':'More favourites to add to your order.';
+    r.html+=rowSection(ALSO_HEADING,sub,pairs,'clamp(30px,5vw,60px)')+rowSection('Recently viewed','',recentList(ids,4),'clamp(30px,5vw,60px)');
+  }
+  return r;
+};
 pages.checkout=function(){
   if(!cart.length){location.replace("#/cart");return {title:"Cart | ROOHI",html:""}}
   var t=totals();
@@ -1251,7 +1628,7 @@ function orderText(o){
   "Address: "+[o.address.street,o.address.unit,o.address.area,o.address.emirate].filter(Boolean).join(", "),
   o.address.landmark?"Landmark: "+o.address.landmark:"",o.address.mapLink?"Map: "+o.address.mapLink:"",o.address.notes?"Delivery notes: "+o.address.notes:"","",
   "Items:"].concat(o.items.map(function(i){return "- "+i.name+" | size "+i.size+" | qty "+i.qty+" | "+money(i.price*i.qty)}));
-  L.push("","Subtotal: "+money(o.totals.sub),"Delivery: "+(o.totals.ship?money(o.totals.ship):"Free"),"Total: "+money(o.totals.total),"Payment: "+o.payment);
+  L.push("","Subtotal: "+money(o.totals.sub));if(o.totals.disc)L.push("Offer savings: -"+money(o.totals.disc)+" ("+offerNames(o.totals)+")");L.push("Delivery: "+(o.totals.ship?money(o.totals.ship):"Free"),"Total: "+money(o.totals.total),"Payment: "+o.payment);
   if(o.note)L.push("Note: "+o.note);
   return L.filter(function(x,i,a){return x!==""||a[i-1]!==""}).join("\n");
 }
@@ -1259,7 +1636,7 @@ function orderSheetPayload(order){
   return {type:"order",orderId:order.id,date:order.date,name:order.customer.fullName,phone:order.customer.phone,whatsapp:order.customer.whatsapp,email:order.customer.email,
     emirate:order.address.emirate,area:order.address.area,street:order.address.street,unit:order.address.unit,landmark:order.address.landmark,mapLink:order.address.mapLink,deliveryNotes:order.address.notes,
     items:order.items.map(function(i){return i.name+" | Size "+i.size+" | Qty "+i.qty+" | "+money(i.price*i.qty)}).join("\n"),
-    itemCount:order.items.reduce(function(a,i){return a+i.qty},0),subtotal:order.totals.sub,delivery:order.totals.ship,total:order.totals.total,payment:order.payment,orderNote:order.note};
+    itemCount:order.items.reduce(function(a,i){return a+i.qty},0),subtotal:order.totals.sub,discount:order.totals.disc||0,offers:offerNames(order.totals),delivery:order.totals.ship,total:order.totals.total,payment:order.payment,orderNote:order.note};
 }
 function finalizeOrder(order,sent){
   order.sent=sent;
@@ -1330,7 +1707,7 @@ pages.confirmation=function(){
   '<div class="on-sand"><div class="narrow done" style="padding:clamp(50px,7vw,90px) 0 clamp(70px,9vw,120px)"><h1>Thank you, '+esc(first)+'.</h1><p class="lede">We have your order and will contact you to confirm it. Keep your phone nearby so we can reach you.</p><span class="orderid">'+esc(o.id)+'</span>'+
   '<div style="margin-top:30px">'+send+'</div>'+
   '<div class="box"><h2>Order details</h2><dl>'+o.items.map(function(i){return '<dt>'+esc(i.name)+'</dt><dd>'+esc(sizeText(i.size))+' &middot; Qty '+i.qty+' &middot; '+money(i.price*i.qty)+'</dd>'}).join('')+
-  '<dt>Delivery fee</dt><dd>Free</dd><dt>Total to pay</dt><dd><strong>'+money(o.totals.total)+'</strong> ('+esc(o.payment)+')</dd></dl></div>'+
+  (o.totals.disc?'<dt>Offer savings</dt><dd>&minus;'+money(o.totals.disc)+' ('+esc(offerNames(o.totals))+')</dd>':'')+'<dt>Shipping &amp; handling</dt><dd>Free</dd><dt>Total to pay</dt><dd><strong>'+money(o.totals.total)+'</strong> ('+esc(o.payment)+')</dd></dl></div>'+
   '<div class="box"><h2>Delivering to</h2><dl><dt>Name</dt><dd>'+esc(o.customer.fullName)+'</dd><dt>Mobile</dt><dd>'+esc(o.customer.phone)+'</dd><dt>Email</dt><dd>'+esc(o.customer.email)+'</dd><dt>Address</dt><dd>'+esc([o.address.street,o.address.unit,o.address.area,o.address.emirate,"United Arab Emirates"].filter(Boolean).join(", "))+'</dd>'+(o.address.landmark?'<dt>Landmark</dt><dd>'+esc(o.address.landmark)+'</dd>':'')+'</dl></div>'+
   '<h2 style="font-size:32px;margin:44px 0 6px">What happens next</h2><ul class="next"><li>We contact you by phone or WhatsApp to confirm your order and address.</li><li>We prepare and dispatch your abaya. Delivery takes '+esc(CONFIG.deliveryDays)+'.</li><li>The courier calls you on arrival. Check your piece'+(o.payment==="Online payment"?' and enjoy it.':', then pay '+money(o.totals.total)+(o.payment==="Card on delivery"?' by card.':' in cash.'))+'</li></ul>'+
   '<div class="actions no-print" style="justify-content:flex-start"><button class="btn" type="button" onclick="window.print()">Print this page</button><a class="btn" href="#/collections">Continue shopping</a></div></div></div>'};
