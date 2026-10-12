@@ -5,9 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ROOHI | Premium Abayas</title>
 <meta name="description" content="ROOHI – premium abayas. Pay by card or cash on delivery. عبايات روحي">
+<script>
+(function(){var h=(location.hash||"#/").replace(/^#\/?/,"").split("?")[0].split("/")[0]||"home";
+var m={home:"images/muroon3.png",abayas:"images/muroon1.png",collections:"images/muroon1.png",bags:"images/muroon4.png"};
+if(m[h]){var l=document.createElement("link");l.rel="preload";l.as="image";l.href=m[h];l.setAttribute("fetchpriority","high");document.head.appendChild(l)}})();
+</script>
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#15100c">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Tenor+Sans&family=Amiri:wght@400;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Tenor+Sans&family=Amiri:wght@400;700&display=swap"></noscript>
 <style>
 :root{
   --ink:#15100c; --ink-2:#1e1711;
@@ -88,7 +99,8 @@ main:focus{outline:none}
 .scroll-cue i::after{content:"";position:absolute;left:-4px;bottom:-9px;width:9px;height:9px;border:1px solid rgba(246,239,226,.8);border-radius:50%}
 .scroll-cue:focus-visible{outline:2px solid var(--gold);outline-offset:6px}
 @media (prefers-reduced-motion:no-preference){
-  .hero-media img{opacity:0;transform:scale(1.05);animation:heroin 1.6s .1s cubic-bezier(.2,.7,.2,1) forwards}
+  .hero-media img{opacity:0;transform:scale(1.05);will-change:opacity,transform}
+  .hero-media img.ready{animation:heroin 1.4s cubic-bezier(.2,.7,.2,1) forwards}
   @keyframes heroin{to{opacity:1;transform:none}}
 }
 
@@ -147,7 +159,8 @@ main:focus{outline:none}
 
 /* ---------- Collections page animations ---------- */
 @media (prefers-reduced-motion:no-preference){
-  .coll-hero img{animation:collZoom 2.2s cubic-bezier(.2,.7,.2,1) both}
+  .coll-hero img{opacity:0;will-change:opacity,transform}
+  .coll-hero img.ready{animation:collZoom 1.8s cubic-bezier(.2,.7,.2,1) both}
   @keyframes collZoom{from{opacity:0;transform:scale(1.08)}to{opacity:1;transform:none}}
   .coll-hero-copy>*{opacity:0;animation:collRise .9s cubic-bezier(.2,.7,.2,1) forwards}
   .coll-hero-copy>:nth-child(1){animation-delay:.25s}
@@ -391,6 +404,10 @@ footer .ar{text-align:left;font-family:var(--arabic);font-size:26px;color:var(--
   .steps{grid-template-columns:1fr}
   .cards.two{grid-template-columns:1fr}
 }
+/* ---------- smooth image loading ---------- */
+.card .ph img{transition:transform 1.3s cubic-bezier(.2,.7,.2,1),opacity .5s ease}
+.card .ph img:not(.ld){opacity:0}
+@media (prefers-reduced-motion:reduce){.hero-media img,.coll-hero img{opacity:1;transform:none}}
 </style>
 <style>
 /* ROOHI theme: cream, burgundy, Playfair Display + Montserrat */
@@ -783,7 +800,7 @@ var PRODUCTS = [
   { id:"onyx-sash", name:"Onyx Sash", price:83, stock:4,
     imgs:["images/9.0.avif", "images/9.1.avif", "images/9.2.avif"],
     pos:"50% 50%",
-    sizes:{ S:false, M:false, L:false, XL:false, XXL:true },
+    sizes:{ S:false, M:false, L:true, XL:true, XXL:false },
     short:"A closed black abaya with a tie waist, wide sleeves and a relaxed, floor-length drape." },
 
   { id:"pearl-dot", name:"Pearl Dot", price:99, stock:3,
@@ -942,57 +959,57 @@ var BAG_PRODUCTS = [
   { id:"rose-buckle", name:"Rose Buckle", price:43, stock:3,
     imgs:["images/bag2.avif", "images/bag2.1.avif"],
     pos:"50% 50%",
-    short:"One short sentence shown on the shop cards." },
+    short:"A blush-rose shoulder bag finished with a polished gold buckle and a soft, structured shape." },
 
   { id:"cocoa-bow", name:"Cocoa Bow", price:46, stock:4,
     imgs:["images/bag3.avif", "images/bag3.1.avif"],
     pos:"50% 50%",
-    short:"One short sentence shown on the shop cards." },
+    short:"A rich cocoa-brown bag tied with a delicate bow, a sweet, feminine finish for day or evening." },
 
   { id:"snow-leopard", name:"Snow Leopard", price:42, stock:3,
     imgs:["images/bag4.avif", "images/bag4.1.avif", "images/bag4.2.avif"],
     pos:"50% 50%",
-    short:"One short sentence shown on the shop cards." },
+    short:"A pale snow-leopard print bag in soft neutral tones, a subtle statement piece for any abaya." },
 
   { id:"pearl-rib", name:"Pearl Rib", price:47, stock:2,
     imgs:["images/bag5.avif", "images/bag5.1.avif"],
     pos:"50% 50%",
-    short:"One short sentence shown on the shop cards." },
+    short:"A pearl-toned ribbed bag with a refined, textured finish and a clean, elegant silhouette." },
 
   { id:"ribbon-duet", name:"Ribbon Duet", price:50, stock:2,
     imgs:["images/bag6.avif", "images/bag6.1.avif","images/bag6,2.avif"],
     pos:"50% 50%",
-    short:"One short sentence shown on the shop cards." },
+    short:"A graceful bag styled with a pair of ribbons, light, romantic and easy to carry." },
 
   { id:"mocha-knot", name:"Mocha Knot", price:48, stock:3,
     imgs:["images/bag8.avif", "images/bag8.1.avif","images/bag8.2.avif"],
     pos:"50% 50%",
-    short:"One short sentence shown on the shop cards." },
+    short:"A warm mocha bag with a sculpted knot detail and a soft, slouchy shape." },
 
   { id:"mink-cloud", name:"Mink Cloud", price:38, stock:3,
     imgs:["images/bag7.avif", "images/bag7.1.avif"],
     pos:"50% 50%",
-    short:"One short sentence shown on the shop cards." },
+    short:"A soft mink-grey bag with a cloud-like, pillowy shape that pairs easily with every abaya." },
 
   { id:"caramel-braid", name:"Caramel Braid", price:55, stock:2,
     imgs:["images/bag9.avif", "images/bag9.1.avif", "images/bag9.2.avif"],
     pos:"50% 50%",
-    short:"One short sentence shown on the shop cards." },
+    short:"A caramel-toned bag with a hand-braided handle, warm, textured and quietly luxurious." },
 
   { id:"sand-crescent", name:"Sand Crescent", price:49, stock:2,
     imgs:["images/bag10.avif"],
     pos:"50% 50%",
-    short:"One short sentence shown on the shop cards." },
+    short:"A sand-coloured crescent-shaped bag with a sleek curve, simple, modern and effortless." },
 
   { id:"ivory-crochet", name:"Ivory Crochet", price:54, stock:4,
     imgs:["images/bag11.avif", "images/bag11.1.avif", "images/bag11.2.avif"],
     pos:"50% 50%",
-    short:"One short sentence shown on the shop cards." },
+    short:"An ivory crochet bag with a delicate woven texture, light and airy with a handmade feel." },
 
   { id:"heritage-flap", name:"Heritage Flap", price:62, stock:2,
     imgs:["images/bag12.avif", "images/bag12.1.avif"],
     pos:"50% 50%",
-    short:"One short sentence shown on the shop cards." },
+    short:"A classic flap-over bag in a timeless shape with a secure closure, made to last season after season." },
 
 
   /* Add your bags here. Same fields as an abaya, but no "sizes" line.
@@ -1187,7 +1204,7 @@ function stockLabel(p){
 }
 function card(p){
   var oos=!inStock(p);
-  return '<a class="card'+(oos?' oos':'')+'" data-cat="'+(isBag(p)?'bag':isFree(p)?'free':'sized')+'" href="#/piece/'+p.id+'"><div class="ph">'+(oos?'<span class="tag-oos">Sold out</span>':(isFree(p)?'<span class="tag-fs">Free size</span>':''))+'<img src="'+mainImg(p)+'" alt="'+esc(p.name)+(isBag(p)?' bag':' abaya')+'" loading="lazy" style="object-position:'+(p.pos||"50% 50%")+cropStyle(mainImg(p))+'"><span class="quick">VIEW PIECE</span></div>'+
+  return '<a class="card'+(oos?' oos':'')+'" data-cat="'+(isBag(p)?'bag':isFree(p)?'free':'sized')+'" href="#/piece/'+p.id+'"><div class="ph">'+(oos?'<span class="tag-oos">Sold out</span>':(isFree(p)?'<span class="tag-fs">Free size</span>':''))+'<img src="'+mainImg(p)+'" alt="'+esc(p.name)+(isBag(p)?' bag':' abaya')+'" loading="lazy" decoding="async" style="object-position:'+(p.pos||"50% 50%")+cropStyle(mainImg(p))+'"><span class="quick">VIEW PIECE</span></div>'+
   '<div class="meta"><h3>'+esc(p.name)+'</h3>'+priceHTML(p)+'</div><p>'+esc(p.short)+'</p>'+stockLabel(p)+'</a>';
 }
 function orderSteps(){
@@ -1230,7 +1247,7 @@ var pages={};
 
 pages.home=function(){
   return {title:"ROOHI | Premium Abayas", html:
-  '<section class="hero"><div class="hero-media"><img src="'+IMG.bag+'" width="1024" height="1536" alt="A woman in a black ROOHI abaya with gold piping holding a cream ROOHI shopping bag"></div>'+
+  '<section class="hero"><div class="hero-media"><img src="'+IMG.bag+'" width="1024" height="1536" fetchpriority="high" decoding="async" alt="A woman in a black ROOHI abaya with gold piping holding a cream ROOHI shopping bag"></div>'+
   '<div class="hero-copy"><p class="hero-sub">'+esc(TEXT.heroSub)+'</p><h1 class="hero-title">'+TEXT.heroTitle.map(esc).join('<br>')+'</h1><p class="hero-line">'+esc(TEXT.heroTagline)+'</p>'+
   '<div class="hero-cta"><a class="btn" href="#/abayas">'+esc(TEXT.heroButton)+' &rarr;</a></div></div>'+
   '<button type="button" class="scroll-cue" id="scrollCue" aria-label="Scroll down"><span>Scroll</span><i></i></button></section>'+
@@ -1240,7 +1257,7 @@ pages.home=function(){
   '<div class="cards">'+newestAbayas(4).map(card).join('')+'</div>'+
   (BAG_PRODUCTS.length?'<div class="cards" style="margin-top:clamp(28px,3vw,40px)">'+newest(BAG_PRODUCTS,4).map(card).join('')+'</div>':'')+
   '<p style="text-align:center;margin:60px 0 0;display:flex;gap:16px;justify-content:center;flex-wrap:wrap"><a class="btn" href="#/abayas">Shop abayas</a><a class="btn" href="#/bags">Shop bags</a></p></div></section>'+
-  '<section class="detail on-ink"><img src="'+IMG.sleeve+'" width="1536" height="1024" loading="lazy" alt="Close view of a black abaya sleeve with a fine gold line and the ROOHI star"><div class="wrap"><h2>'+esc(TEXT.detailHeading)+'</h2><p>'+esc(TEXT.detailText)+'</p></div></section>'+
+  '<section class="detail on-ink"><img src="'+IMG.sleeve+'" width="1536" height="1024" loading="lazy" decoding="async" alt="Close view of a black abaya sleeve with a fine gold line and the ROOHI star"><div class="wrap"><h2>'+esc(TEXT.detailHeading)+'</h2><p>'+esc(TEXT.detailText)+'</p></div></section>'+
   '<section class="section on-sand"><div class="wrap"><div class="sec-head"><h2>'+esc(TEXT.orderSectionHeading)+'</h2><p>'+esc(TEXT.orderSectionSub)+'</p></div>'+orderSteps()+'</div></section>',
   init:function(){
     var c=$("#scrollCue"); if(c)c.addEventListener("click",function(){var h=$(".hero");window.scrollTo({top:h.offsetTop+h.offsetHeight-(parseInt(getComputedStyle(document.documentElement).getPropertyValue("--nav-h"))||76),behavior:"smooth"})});
@@ -1266,7 +1283,7 @@ pages.abayas=function(){
     '<button type="button" data-f="sized" aria-pressed="false">S &ndash; XXL<small>'+nS+'</small></button>'+
     '<button type="button" data-f="free" aria-pressed="false">Free size<small>'+nF+'</small></button></div>';
   return {title:"Abayas | ROOHI", html:
-  '<section class="coll-hero"><img src="'+IMG.collectionsHero+'" width="1944" height="809" loading="lazy" alt="A woman in a black embroidered ROOHI abaya holding a cream shopping bag beside a courtyard fountain"><div class="coll-hero-copy"><p class="hero-sub">EXPLORE OUR</p><h1>Abayas</h1><p>Timeless abayas for every moment, every mood, every you.</p><span class="div-line"></span></div></section>'+
+  '<section class="coll-hero"><img src="'+IMG.collectionsHero+'" width="1944" height="809" fetchpriority="high" decoding="async" alt="A woman in a black embroidered ROOHI abaya holding a cream shopping bag beside a courtyard fountain"><div class="coll-hero-copy"><p class="hero-sub">EXPLORE OUR</p><h1>Abayas</h1><p>Timeless abayas for every moment, every mood, every you.</p><span class="div-line"></span></div></section>'+
   '<div class="on-sand"><div class="wrap"><div class="page-head" style="padding-top:clamp(30px,4vw,50px)"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span>/</span>Abayas</nav></div>'+
   '<div class="sec-head" style="margin-top:clamp(30px,4vw,50px)"><h2>All abayas</h2></div>'+tabs+'<p class="filter-note" id="fnote" hidden>Free size pieces come in one size, so there is nothing to choose.</p>'+
   '<div class="cards" id="grid" style="padding-bottom:clamp(70px,9vw,130px)">'+list.map(card).join('')+'</div></div></div>',
@@ -1301,7 +1318,7 @@ pages.bags=function(){
   var body=list.length?'<div class="sec-head"><h2>All bags</h2></div><div class="cards" style="padding-bottom:clamp(70px,9vw,130px)">'+list.map(card).join('')+'</div>'
     :'<div class="empty" style="padding:clamp(50px,7vw,100px) 0"><h2>Bags are coming soon</h2><p>Our bag collection is on its way. Message us to hear first.</p><a class="btn solid" href="#/contact">Contact us</a></div>';
   return {title:"Bags | ROOHI", html:
-  '<section class="coll-hero coll-hero--bags"><img src="'+IMG.bagsHero+'" width="1983" height="793" loading="lazy" alt="A collection of burgundy leather ROOHI bags with gold hardware on a stone plinth"><div class="coll-hero-copy"><p class="hero-sub">EXPLORE OUR</p><h1>Bags</h1><p>Refined bags to complete every abaya.</p><span class="div-line"></span></div></section>'+
+  '<section class="coll-hero coll-hero--bags"><img src="'+IMG.bagsHero+'" width="1983" height="793" fetchpriority="high" decoding="async" alt="A collection of burgundy leather ROOHI bags with gold hardware on a stone plinth"><div class="coll-hero-copy"><p class="hero-sub">EXPLORE OUR</p><h1>Bags</h1><p>Refined bags to complete every abaya.</p><span class="div-line"></span></div></section>'+
   '<div class="on-sand"><div class="wrap"><div class="page-head" style="padding-top:clamp(30px,4vw,50px)"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span>/</span>Bags</nav></div>'+body+'</div></div>'};
 };
 
@@ -1310,7 +1327,7 @@ function pdpGallery(p,oos){
   var main='<div class="pdp-img'+(oos?' oos':'')+'" id="pdpMain">'+(oos?'<span class="tag-oos">Sold out</span>':'')+'<img src="'+imgs[0]+'" alt="'+esc(p.name)+(isBag(p)?' bag':' abaya')+'" style="object-position:'+(p.pos||"50% 50%")+cropStyle(imgs[0])+'">'+(imgs.length>1?'<button type="button" class="pdp-arrow prev" data-nav="-1" aria-label="Previous photo"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="pdp-arrow next" data-nav="1" aria-label="Next photo"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button><span class="pdp-count" id="pdpCount">1 / '+imgs.length+'</span>':'')+'</div>';
   if(imgs.length<2)return '<div class="pdp-gallery">'+main+'</div>';
   var thumbs='<div class="pdp-thumbs" role="tablist" aria-label="More photos of '+esc(p.name)+'">'+imgs.map(function(src,i){
-    return '<button type="button" class="pdp-thumb'+(i===0?' active':'')+'" data-img="'+i+'" aria-label="Photo '+(i+1)+' of '+imgs.length+'"'+(i===0?' aria-current="true"':'')+'><img src="'+src+'" alt="" loading="lazy" style="'+cropStyle(src).slice(1)+'"></button>';
+    return '<button type="button" class="pdp-thumb'+(i===0?' active':'')+'" data-img="'+i+'" aria-label="Photo '+(i+1)+' of '+imgs.length+'"'+(i===0?' aria-current="true"':'')+'><img src="'+src+'" alt="" loading="lazy" decoding="async" style="'+cropStyle(src).slice(1)+'"></button>';
   }).join('')+'</div>';
   return '<div class="pdp-gallery">'+main+thumbs+'</div>';
 }
@@ -1343,7 +1360,7 @@ function offersHTML(){
   /* [offer, link, photo, photo focal point, button text] */
   var items=[[O.duo,"#/bags",IMG.bagsHero,"72% 50%","GRAB THE DUO"],[O.look,"#/abayas",IMG.bag,"50% 28%","BUILD YOUR LOOK"],[O.set,"#/abayas",IMG.collectionsHero,"74% 40%","GET THE SET"]];
   return '<section class="on-sand offers" aria-label="ROOHI offers"><div class="wrap"><div class="ohead"><span class="oeb">ROOHI OFFERS</span><h2>Bag it. Pair it. Save.</h2><p>The more you pair, the more you save.</p></div><div class="ogrid">'+items.map(function(x,i){var o=x[0],c=offerCalc(o,i);
-    return '<a class="ocard'+(i===2?' feat':'')+'" href="'+x[1]+'"><img src="'+x[2]+'" alt="" loading="lazy" style="object-position:'+x[3]+'">'+
+    return '<a class="ocard'+(i===2?' feat':'')+'" href="'+x[1]+'"><img src="'+x[2]+'" alt="" loading="lazy" decoding="async" style="object-position:'+x[3]+'">'+
       '<span class="tag">'+c.tag+'</span>'+
       '<span class="nm">'+esc(o.name)+'</span><span class="hk">'+esc(o.text)+'</span>'+
       '<span class="pct"><b>'+c.pct+'</b><i>%</i><em>OFF</em></span>'+
@@ -1402,7 +1419,7 @@ function openSet(baseId,preSize){
   closeSet();
   var back=document.createElement("div");back.className="sm-back";back.id="smBack";
   back.setAttribute("role","dialog");back.setAttribute("aria-modal","true");back.setAttribute("aria-label","Make it a set");
-  var tiles=list.map(function(p){return '<button type="button" class="sm-it" data-pick="'+p.id+'" aria-pressed="false"><img src="'+mainImg(p)+'" alt="" loading="lazy" style="object-position:'+(p.pos||"50% 50%")+cropStyle(mainImg(p))+'"><span>'+esc(p.name)+'</span><small>'+tilePrice(p)+'</small></button>'}).join('');
+  var tiles=list.map(function(p){return '<button type="button" class="sm-it" data-pick="'+p.id+'" aria-pressed="false"><img src="'+mainImg(p)+'" alt="" loading="lazy" decoding="async" style="object-position:'+(p.pos||"50% 50%")+cropStyle(mainImg(p))+'"><span>'+esc(p.name)+'</span><small>'+tilePrice(p)+'</small></button>'}).join('');
   back.innerHTML='<div class="sm"><button type="button" class="sm-x" data-x aria-label="Close">&times;</button>'+
     '<h2>'+(baseBag?'Make it a set &#129293;':'Complete your look')+'</h2>'+
     '<p class="sm-sub">'+(baseBag?'Pick your abaya to go with the '+esc(base.name)+' bag.':'Pick a ROOHI bag to go with the '+esc(base.name)+' abaya.')+' Your bag is <strong>'+O.look.pct+'% off</strong> with an abaya.</p>'+
@@ -1840,6 +1857,17 @@ function handlePaymentReturn(qs){
 }
 
 /* ---------- router ---------- */
+/* smooth image loading: start hero animation / fade cards in only once the photo has arrived */
+function watchImgs(root){
+  $$(".hero-media img,.coll-hero img",root).forEach(function(im){
+    var go=function(){im.classList.add("ready")};
+    if(im.complete)go();else{im.addEventListener("load",go,{once:true});im.addEventListener("error",go,{once:true});setTimeout(go,3000)}
+  });
+  $$(".card .ph img",root).forEach(function(im){
+    var go=function(){im.classList.add("ld")};
+    if(im.complete)go();else{im.addEventListener("load",go,{once:true});im.addEventListener("error",go,{once:true});setTimeout(go,4000)}
+  });
+}
 var current=null;
 function route(){
   var h=(location.hash||"#/").replace(/^#\/?/,"");
@@ -1853,6 +1881,7 @@ function route(){
   window.scrollTo(0,0); $("#toast").classList.remove("show");
   $("#menu").classList.remove("open");$("#burger").setAttribute("aria-expanded","false");
   if(pg.init)pg.init();
+  watchImgs(m);
   m.setAttribute("tabindex","-1");
 }
 window.addEventListener("hashchange",route);
