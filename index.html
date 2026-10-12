@@ -17,8 +17,8 @@ if(m[h]){var l=document.createElement("link");l.rel="preload";l.as="image";l.hre
 <meta name="theme-color" content="#15100c">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Tenor+Sans&family=Amiri:wght@400;700&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Tenor+Sans&family=Amiri:wght@400;700&display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Tenor+Sans&family=Amiri:wght@400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Tenor+Sans&family=Amiri:wght@400&display=swap"></noscript>
 <style>
 :root{
   --ink:#15100c; --ink-2:#1e1711;
@@ -408,6 +408,8 @@ footer .ar{text-align:left;font-family:var(--arabic);font-size:26px;color:var(--
 .card .ph img{transition:transform 1.3s cubic-bezier(.2,.7,.2,1),opacity .5s ease}
 .card .ph img:not(.ld){opacity:0}
 @media (prefers-reduced-motion:reduce){.hero-media img,.coll-hero img{opacity:1;transform:none}}
+/* ---------- faster first render ---------- */
+.detail,.on-sand+.on-sand,footer{content-visibility:auto;contain-intrinsic-size:auto 700px}
 </style>
 <style>
 /* ROOHI theme: cream, burgundy, Playfair Display + Montserrat */
@@ -1898,6 +1900,9 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape"){$("#menu").
 /* validate cart against products (in case products changed) */
 cart=cart.filter(function(l){return byId(l.id)&&l.qty>0});
 renderFooter(); updateBadge(); route(); flushQueue();
+/* repeat visits: keep photos & icons cached on the device */
+if("serviceWorker" in navigator&&location.protocol==="https:"){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})})}
+
 })();
 </script>
 </body>
