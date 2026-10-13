@@ -1581,7 +1581,7 @@ pages.piece=function(id){
   var bag=isBag(p);
   r.html=r.html.replace('<a href="#/collections">Collections</a>',bag?'<a href="#/bags">Bags</a>':'<a href="#/abayas">Abayas</a>');
   if(bag){
-    r.html=r.html.replace(/<a href="#size-guide"[^>]*>Size guide<\/a>/,'').replace(/<details class="acc" id="size-guide">[\s\S]*?<\/details>/,'<details class="acc" id="size-guide" open><summary>Details</summary><div class="body"><p>One size. Message us if you would like exact measurements or more photos of this bag.</p></div></details>').replace(/storing your abaya on a hanger/,'storing your bag in its dust bag');
+    r.html=r.html.replace(/<a href="#size-guide"[^>]*>Size guide<\/a>/,'').replace(/<details class="acc" id="size-guide">[\s\S]*?<\/details>/,'').replace(/storing your abaya on a hanger/,'storing your bag in its dust bag');
   }
   return r;
 };
